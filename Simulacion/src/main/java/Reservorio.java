@@ -31,24 +31,40 @@ public class Reservorio {
         return volumenR;
     }
 
-    public void reinyectar(double unVolumenGas, double unVolumenAgua){
-        double volumenReinyectado = unVolumenAgua + unVolumenGas;
-        assert(volumenGlobalReinyectado + volumenReinyectado < volumenGlobalExtraido);
+    //FIXME: Se puede reinyectar de a mas de a un producto? Segun como estan escritas las formulas parece que no
+    public void reinyectar(double unVolumenAReinyectar, String producto){
+        assert(volumenGlobalReinyectado + unVolumenAReinyectar < volumenGlobalExtraido);
 
-        volumenGlobalReinyectado += volumenReinyectado;
-        proporcionDePetroleo = proporcionDespuesDeReinyeccion(proporcionDePetroleo, volumenReinyectado);
-        proporcionDeGas = proporcionDespuesDeReinyeccion(proporcionDeGas, volumenReinyectado);
-        proporcionDeAgua = proporcionDespuesDeReinyeccion(proporcionDeAgua, volumenReinyectado);
+        proporcionDePetroleo = proporcionElementoNoInyectadoAlReinyectar(proporcionDePetroleo, unVolumenAReinyectar);
+        if(producto.equals("Agua")){
+            proporcionDeGas = proporcionElementoNoInyectadoAlReinyectar(proporcionDeGas, unVolumenAReinyectar);
+            proporcionDeAgua = proporcionElementoInyectadoAlReinyectar(proporcionDeAgua, unVolumenAReinyectar);
+        } else if(producto.equals("Gas")){
+            proporcionDeGas = proporcionElementoInyectadoAlReinyectar(proporcionDeGas, unVolumenAReinyectar);
+            proporcionDeAgua = proporcionElementoNoInyectadoAlReinyectar(proporcionDeAgua, unVolumenAReinyectar);
+        }
+        volumenGlobalReinyectado += unVolumenAReinyectar;
     }
 
     public void extraer(double unVolumen){
         volumenGlobalExtraido += unVolumen;
     }
 
-    //Formula 4 del enunciado (aplicada a las distintas proporciones)
-    private double proporcionDespuesDeReinyeccion(double proporcionProducto, double volumenReinyectado){
-        return (proporcionProducto * (volumenR - volumenGlobalExtraido)) /
-                (volumenR - volumenGlobalExtraido + volumenGlobalReinyectado);
+    //FIXME: En el enunciado dice que se podria cambiar esta formula, deberíamos abstraerla?
+    //FIXME: Estas formulas no son exactamente las del enunciado (no se entienden las del enunciado,
+    //       las escritas aca son las que tiene sentido que sean)
+    //Formula 4 del enunciado (aplicada a los elementos de los que no se reinyecta)
+    private double proporcionElementoNoInyectadoAlReinyectar(double proporcionViejaProducto,
+                                                             double volumenReinyectado){
+        return (proporcionViejaProducto * volumenActual()) /
+                (volumenActual() + volumenReinyectado);
+    }
+
+    //Formula 4 del enunciado (aplicada a los elementos que se reinyecta)
+    private double proporcionElementoInyectadoAlReinyectar(double proporcionViejaProducto,
+                                                           double volumenReinyectado){
+        return (proporcionViejaProducto * volumenActual() + volumenReinyectado) /
+                (volumenActual() + volumenReinyectado);
     }
 
 }
