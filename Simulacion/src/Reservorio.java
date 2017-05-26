@@ -45,8 +45,7 @@ public class Reservorio {
     }
 
     //Formula 4 del enunciado (aplicada a las distintas proporciones)
-    private double proporcionDespuesDeReinyeccion(double proporcionProducto,
-                                                  double volumenReinyectado){
+    private double proporcionDespuesDeReinyeccion(double proporcionProducto, double volumenReinyectado){
         return (proporcionProducto * (volumenR - volumenGlobalExtraido)) /
                 (volumenR - volumenGlobalExtraido + volumenGlobalReinyectado);
     }

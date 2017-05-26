@@ -5,9 +5,9 @@ import java.lang.Math;
 
 public class ReguladorPlantaSeparadora implements Regulador {
 
-    //TODO: Mover a un archivo con constantes
-    double capacidadNuevasPlantas = 1000;
-    int diasConstruccionPlantas = 10;
+    //Obtenemos los valores de las constantes para la construccion de plantas separadoras
+    private final double capacidadNuevasPlantas = new ParametrosSimulacion().capacidadNuevasPlantas;
+    private final int diasConstruccionPlantas = new ParametrosSimulacion().diasConstruccionPlantas;
 
     private List<PlantaSeparadora> plantasSeparadorasCompletadas;
     private List<PlantaSeparadoraEnConstruccion> plantasSeparadorasEnConstruccion;
@@ -33,6 +33,8 @@ public class ReguladorPlantaSeparadora implements Regulador {
     }
 
     public void comprarPlantaSeparadora(){
+        //FIXME: Se necesita el logger para loggear la compra de la planta separadora?
+        //FIXME: De donde se obtiene el precio de la planta separadora comprada?
         plantasSeparadorasEnConstruccion.add(new PlantaSeparadoraEnConstruccion(diasConstruccionPlantas));
     }
 
@@ -51,8 +53,10 @@ public class ReguladorPlantaSeparadora implements Regulador {
             PlantaSeparadoraEnConstruccion plantaEnConstruccion = plantasEnConstruccionIterator.next();
             plantaEnConstruccion.avanzarDiaConstruccion();
             if(plantaEnConstruccion.construccionTerminada()){
+                int numeroNuevaPlanta = plantasSeparadorasCompletadas.size() + plantasSeparadorasEnConstruccion.size();
+                PlantaSeparadora nuevaPlanta = new PlantaSeparadora(new Logger(), numeroNuevaPlanta, capacidadNuevasPlantas);
                 plantasEnConstruccionIterator.remove();
-                plantasSeparadorasCompletadas.add(new PlantaSeparadora(new Logger(), capacidadNuevasPlantas));
+                plantasSeparadorasCompletadas.add(nuevaPlanta);
             }
         }
     }
