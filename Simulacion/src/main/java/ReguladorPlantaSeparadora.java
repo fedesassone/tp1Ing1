@@ -13,8 +13,8 @@ public class ReguladorPlantaSeparadora implements Regulador {
     private List<PlantaSeparadoraEnConstruccion> plantasSeparadorasEnConstruccion;
 
     public ReguladorPlantaSeparadora() {
-        this.plantasSeparadorasCompletadas = new LinkedList<>();
-        this.plantasSeparadorasEnConstruccion = new LinkedList<>();
+        this.plantasSeparadorasCompletadas = new LinkedList<PlantaSeparadora>();
+        this.plantasSeparadorasEnConstruccion = new LinkedList<PlantaSeparadoraEnConstruccion>();
     }
 
     public List<PlantaSeparadora> damePlantasCompletadas(){

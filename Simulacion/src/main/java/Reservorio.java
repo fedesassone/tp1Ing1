@@ -10,6 +10,7 @@ public class Reservorio {
 
     public Reservorio(double proporcionDeGas, double proporcionDePetroleo, double proporcionDeAgua,
                       double volumenR) {
+        assert((proporcionDeAgua + proporcionDeGas + proporcionDePetroleo) == 1.0);
         this.proporcionDeGas = proporcionDeGas;
         this.proporcionDePetroleo = proporcionDePetroleo;
         this.proporcionDeAgua = proporcionDeAgua;
