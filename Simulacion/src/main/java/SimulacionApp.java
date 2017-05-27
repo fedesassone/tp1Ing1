@@ -10,7 +10,7 @@ class SimulacionApp {
                 params.proporcionAgua,
                 params.proporcionPetroleo,
                 params.volumenInicial);
-
-        Simulador simulador = new Simulador(reservorio);
+        Logger logger = new Logger();
+        Simulador simulador = new Simulador(reservorio, logger);
     }
 }

@@ -33,10 +33,10 @@ public class ReguladorPozo implements Regulador {
 
     public void reinyectar () {}
 
-    public double capacidadDeExtraccionTotal(double alphaUno, double alphaDos, int pozosHabilitados) {
+    public double capacidadDeExtraccionTotal(int pozosHabilitados) {
         double capacidadTotal = 0;
         for (Pozo pozo: pozosCompletados) {
-            capacidadTotal += pozo.potencialDeVolumenDiario(alphaUno, alphaDos, pozosHabilitados);
+            capacidadTotal += pozo.potencialDeVolumenDiario(pozosHabilitados);
         }
         return capacidadTotal;
     }

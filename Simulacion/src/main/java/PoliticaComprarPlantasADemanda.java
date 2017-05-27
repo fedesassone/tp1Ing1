@@ -10,8 +10,7 @@ public class PoliticaComprarPlantasADemanda implements PoliticaCompraDePlantas {
         ReguladorPlantaSeparadora elReguladorDePlantas = unSimulador.reguladorPlantaSeparadora;
         ReguladorPozo elReguladorDePozos = unSimulador.reguladorPozo;
         int pozosCompletados = elReguladorDePozos.cantidadPozosCompletados();
-        //TODO: cambiar los numeros para que no tome alpha ni beta
-        double capacidadDeExtraccionTotal = elReguladorDePozos.capacidadDeExtraccionTotal(1.5, 2,pozosCompletados);
+        double capacidadDeExtraccionTotal = elReguladorDePozos.capacidadDeExtraccionTotal(pozosCompletados);
         double capacacidadAFuturo = elReguladorDePlantas.futuraCapacidadDeSeparacionTotal();
 
         while(capacidadDeExtraccionTotal>capacacidadAFuturo){
