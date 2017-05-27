@@ -2,10 +2,11 @@
 public final class ParametrosSimulacion {
 
     //Constantes sobre plantas separadoras
-    public int capacidadNuevasPlantas = 1000;
-    public int diasConstruccionPlantas = 10;
+    public static int capacidadNuevasPlantas = 1000;
+    public static int diasConstruccionPlantas = 10;
 
     //Constantes sobre tanques
-    public int capacidadNuevosTanques = 1000;
-    public int diasConstruccionTanques = 10;
+    public static int capacidadNuevosTanques = 1000;
+    public static int diasConstruccionTanques = 10;
+
 }
