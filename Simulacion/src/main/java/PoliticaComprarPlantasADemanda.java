@@ -2,15 +2,17 @@ public class PoliticaComprarPlantasADemanda implements PoliticaCompraDePlantas {
 
     private Logger logger;
 
+
     public PoliticaComprarPlantasADemanda(Logger logger) {
         this.logger = logger;
     }
+
 
     public void aplicarPolitica(Simulador unSimulador){
         ReguladorPlantaSeparadora elReguladorDePlantas = unSimulador.reguladorPlantaSeparadora;
         ReguladorPozo elReguladorDePozos = unSimulador.reguladorPozo;
         int pozosCompletados = elReguladorDePozos.cantidadPozosCompletados();
-        double capacidadDeExtraccionTotal = elReguladorDePozos.capacidadDeExtraccionTotal(pozosCompletados);
+        double capacidadDeExtraccionTotal = elReguladorDePozos.capacidadDeExtraccionTotal(1);
         double capacacidadAFuturo = elReguladorDePlantas.futuraCapacidadDeSeparacionTotal();
 
         while(capacidadDeExtraccionTotal>capacacidadAFuturo){
