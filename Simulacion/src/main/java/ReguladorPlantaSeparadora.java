@@ -34,15 +34,25 @@ public class ReguladorPlantaSeparadora implements Regulador {
         }
     }
 
-    public void comprarPlantaSeparadora(){
+    public PlantaSeparadoraEnConstruccion comprarPlantaSeparadora(){
         //FIXME: Se necesita el logger para loggear la compra de la planta separadora?
         //FIXME: De donde se obtiene el precio de la planta separadora comprada?
-        plantasSeparadorasEnConstruccion.add(new PlantaSeparadoraEnConstruccion(diasConstruccionPlantas));
+        PlantaSeparadoraEnConstruccion nuevaPlanta = new PlantaSeparadoraEnConstruccion(diasConstruccionPlantas, capacidadNuevasPlantas );
+        plantasSeparadorasEnConstruccion.add(nuevaPlanta);
+        return nuevaPlanta;
     }
 
     public double capacidadDeSeparacionTotal(){
         double capacidadTotal = 0;
         for(PlantaSeparadora planta : plantasSeparadorasCompletadas){
+            capacidadTotal += planta.capacidadProcesamiento();
+        }
+        return capacidadTotal;
+    }
+
+    public double futuraCapacidadDeSeparacionTotal(){
+        double capacidadTotal = capacidadDeSeparacionTotal();
+        for(PlantaSeparadoraEnConstruccion planta : plantasSeparadorasEnConstruccion){
             capacidadTotal += planta.capacidadProcesamiento();
         }
         return capacidadTotal;

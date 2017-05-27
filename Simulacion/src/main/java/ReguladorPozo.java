@@ -17,6 +17,9 @@ public class ReguladorPozo implements Regulador {
     public List<Pozo> damePozosCompletados() {
         return pozosCompletados;
     }
+    public int cantidadPozosCompletados(){
+        return pozosCompletados.size();
+    }
 
     public List<PozoEnExcavacion> damePozosEnExcavacion() {
         return pozosEnExcavacion;
