@@ -5,7 +5,7 @@ public final class ParametrosSimulacion {
     public static double proporcionAgua = 0.3;
     public static double proporcionGas = 0.3;
     public static double proporcionPetroleo = 0.4;
-    public static double volumenInicial = 1000; //[10000000..1000000000]
+    public static double volumenInicial = 10000000; //[10000000..1000000000]
 
     //Constantes sobre pozos
     public static double alpha1 = 0.1; //[0.1..0.6]
