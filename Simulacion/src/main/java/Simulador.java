@@ -50,7 +50,7 @@ public class Simulador {
                 new PoliticaNoVenderGas(),
                 new PoliticaReinyectarTodoPorPresionCritica(),
                 new PoliticaExtraerPozosAleatorios(new ParametrosSimulacion().numeroMaximaPozosAAbrirPorDia),
-                new PoliticaFinalizarPorDilucionCritica(),
+                new PoliticaFinalizarPorDilucionCritica(new ParametrosSimulacion().dilucionCriticaPetroleo),
                 reservorio,logger);
     }
 
