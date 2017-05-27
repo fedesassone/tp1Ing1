@@ -48,7 +48,7 @@ public class Simulador {
                 new PoliticaComprarTanquesADemanda(),
                 new PoliticaComprarPlantasADemanda(logger),
                 new PoliticaNoVenderGas(),
-                new PoliticaReinyectarTodoPorPresionCritica(),
+                new PoliticaReinyectarPorPresionCritica(new ParametrosSimulacion().presionCriticaPozos, new CalculadorPresionPorReinyeccionImpl()),
                 new PoliticaExtraerPozosAleatorios(new ParametrosSimulacion().numeroMaximaPozosAAbrirPorDia),
                 new PoliticaFinalizarPorDilucionCritica(new ParametrosSimulacion().dilucionCriticaPetroleo),
                 reservorio,logger);
@@ -78,14 +78,30 @@ public class Simulador {
         this.logger = logger;
     }
 
-    public void simularUnNuevoDia(){
-        //TODO: Completar
+    public boolean simularUnNuevoDia(){
+        avanzarDiaDeConstrucciones();
+        //TODO: Politica compra de RIGS
+        //TODO: Politica compra de excavacion
+        //TODO: Politica compra de tanques
+        //TODO: Politica compra de plantas
+        //TODO: Politica venta de gas
+        if(politicaReinyeccion.hayQueReinyectar(this)){
+            politicaReinyeccion.aplicarReinyeccion(this);
+        } else {
+            politicaExtraccion.aplicarExtraccion(this);
+        }
+        return politicaFinalizacion.hayQueFinalizarSimulacion(this);
     }
 
     public void avanzarDiaDeConstrucciones(){
         reguladorPlantaSeparadora.avanzarDiaConstrucciones();
         reguladorTanqueAgua.avanzarDiaConstrucciones();
         reguladorTanqueGas.avanzarDiaConstrucciones();
+    }
+
+    //FIXME: Queda medio raro, se puede diseñar mejor? Con lo corta que es a lo mejor se puede dejar
+    public void comprarAgua(double unVolumen){
+        logger.loguear("Se compro " + unVolumen + "cm3 de agua");
     }
 
 }

@@ -32,7 +32,12 @@ public class ReguladorPozo implements Regulador {
         pozosEnExcavacion.add(pozoEnExcavacion);
     }
 
-    public void reinyectar () {}
+    public void actualizarPresionPozosPorReinyeccion(double volumenInicial, double volumenAntesReinyeccion,
+                                                     double volumenReinyectado) {
+        for (Pozo pozo: pozosCompletados){
+            pozo.actualizarPresionPorReinyeccion(volumenInicial, volumenAntesReinyeccion, volumenReinyectado);
+        }
+    }
 
     public double capacidadDeExtraccionTotal(int pozosHabilitados) {
         double capacidadTotal = 0;

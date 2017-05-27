@@ -1,4 +1,4 @@
 public interface PoliticaFinalizacion extends Politica {
     //FIXME: Cambiar nombre para que quede mas claro que es el booleano?
-    boolean finalizarSimulacion(Simulador simulador);
+    boolean hayQueFinalizarSimulacion(Simulador simulador);
 }

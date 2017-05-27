@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public abstract class PoliticaExtraccion implements Politica {
 
-    void aplicarPolitica(Simulador unSimulador){
+    void aplicarExtraccion(Simulador unSimulador){
         //Obtenemos los parametros necesarios para la aplicacion
         List<Pozo> pozosSinExtraccionDiaria = new LinkedList<Pozo>(unSimulador.reguladorPozo.damePozosCompletados());
 

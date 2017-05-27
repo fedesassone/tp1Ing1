@@ -60,12 +60,21 @@ public class ReguladorTanque implements Regulador {
         tanquesEnConstruccion.add(new TanqueEnConstruccion(diasConstruccionTanques));
     }
 
+    //FIXME: No queda muy claro por el nombre que esto se refiera a la capacidad libre, aclararlo
     public double capacidadDeAlmacenamientoTotal(){
         double capacidadTotal = 0;
         for(Tanque tanque : tanquesCompletados){
             capacidadTotal += tanque.capacidadLibre();
         }
         return capacidadTotal;
+    }
+
+    public double capacidadAlmacenadaTotal(){
+        double capacidadAlmacenadaTotal = 0;
+        for(Tanque tanque : tanquesCompletados){
+            capacidadAlmacenadaTotal += tanque.espacioUtilizado;
+        }
+        return capacidadAlmacenadaTotal;
     }
 
     public void avanzarDiaConstrucciones(){

@@ -3,9 +3,6 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by juan on 27/05/17.
- */
 public class PoliticaDecompraDePlantasADemandaTest {
     @Test
     public void test1() {
@@ -13,11 +10,11 @@ public class PoliticaDecompraDePlantasADemandaTest {
         int numeroTanquesGas = 1;
         int numeroTanquesAgua = 1;
         List<Pozo> pozosCompletados = new LinkedList<Pozo>();
-        pozosCompletados.add(new Pozo(1, 500, new Logger()));
-        pozosCompletados.add(new Pozo(2, 50, new Logger()));
+        pozosCompletados.add(new Pozo(1, 500, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
+        pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
 
 
-        pozosCompletados.add(new Pozo(3, 50, new Logger()));
+        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
         ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         int cantidadInicial = reguladorPlantaSeparadora.numeroDePlantasEnConstruccion();
@@ -47,12 +44,12 @@ public class PoliticaDecompraDePlantasADemandaTest {
         int numeroTanquesGas = 1;
         int numeroTanquesAgua = 1;
         List<Pozo> pozosCompletados = new LinkedList<Pozo>();
-        pozosCompletados.add(new Pozo(1, 500, new Logger()));
-        pozosCompletados.add(new Pozo(2, 50, new Logger()));
+        pozosCompletados.add(new Pozo(1, 500, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
+        pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
 
 
 
-        pozosCompletados.add(new Pozo(3, 50, new Logger()));
+        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
         ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         int cantidadInicial = reguladorPlantaSeparadora.numeroDePlantasEnConstruccion();
