@@ -2,7 +2,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-//FIXME: Agregar tests
 public class PoliticaExtraerPozosAleatorios extends PoliticaExtraccion {
 
     private int numeroMaximoPozosAHabilitar;
@@ -16,7 +15,9 @@ public class PoliticaExtraerPozosAleatorios extends PoliticaExtraccion {
     }
 
     Optional<Pozo> siguiente(List<Pozo> pozosNoAbiertosTodavia, Simulador unSimulador){
-        if(pozosNoAbiertosTodavia.isEmpty())
+        int numeroPozosUsados = unSimulador.reguladorPozo.damePozosCompletados().size() -
+                pozosNoAbiertosTodavia.size();
+        if(pozosNoAbiertosTodavia.isEmpty() || numeroPozosUsados >= numeroMaximoPozosAHabilitar)
             return Optional.empty();
         else {
             int numeroDePozo = new Random().nextInt(pozosNoAbiertosTodavia.size());

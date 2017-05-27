@@ -9,7 +9,7 @@ class ReguladorTanqueTest {
     public void testConstruccionTanques() {
         ParametrosSimulacion param = new ParametrosSimulacion();
 
-        ReguladorTanque reguladorTanques = new ReguladorTanque();
+        ReguladorTanque reguladorTanques = new ReguladorTanque(TipoDeProducto.GAS);
         reguladorTanques.comprarTanque();
         reguladorTanques.comprarTanque();
 
@@ -43,7 +43,7 @@ class ReguladorTanqueTest {
     @Test
     public void testAlmacenamientoYExtraccion(){
         ParametrosSimulacion param = new ParametrosSimulacion();
-        ReguladorTanque reguladorTanques = new ReguladorTanque();
+        ReguladorTanque reguladorTanques = new ReguladorTanque(TipoDeProducto.GAS);
 
         //Construimos 2 tanques
         reguladorTanques.comprarTanque();

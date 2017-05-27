@@ -2,8 +2,8 @@ public class Fixtures {
 
     private ParametrosSimulacion param = new ParametrosSimulacion();
 
-    public ReguladorTanque reguladorTanqueCon(int unNumeroDeTanques){
-        ReguladorTanque reguladorTanque = new ReguladorTanque();
+    public ReguladorTanque reguladorTanqueCon(int unNumeroDeTanques, TipoDeProducto tipoDeProducto){
+        ReguladorTanque reguladorTanque = new ReguladorTanque(tipoDeProducto);
 
         //Compra de tanques
         for (int i = 0; i < unNumeroDeTanques; i++) {
