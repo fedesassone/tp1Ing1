@@ -29,7 +29,7 @@ public class ReguladorPlantaSeparadoraTest {
         assert(reguladorPlantas.damePlantasCompletadas().size() == numeroPlantasEsperado);
         assert(reguladorPlantas.capacidadDeSeparacionTotal() == numeroPlantasEsperado * param.capacidadNuevasPlantas);
 
-        //El numero dado a las plantas debe ser el correcto
+        //El numeroTanque dado a las plantas debe ser el correcto
         Iterator<PlantaSeparadora> plantasIt = reguladorPlantas.damePlantasCompletadas().iterator();
         for (int i = 0; i < numeroPlantasEsperado; i++) {
             assert(plantasIt.next().numeroPlanta == i);

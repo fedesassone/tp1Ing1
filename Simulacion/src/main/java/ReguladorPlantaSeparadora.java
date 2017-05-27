@@ -22,7 +22,7 @@ public class ReguladorPlantaSeparadora implements Regulador {
     }
 
     //El reparto de la separacion en las plantas se hace en el orden en el que estas se construyeron
-    //Separando lo mas que se puede con cada planta hasta que no hay mas material para separar
+    //Se separa lo mas que se puede con cada planta hasta que no hay mas material para separar
     public void separar(double unVolumen){
         double volumenPorSeparar = unVolumen;
         Iterator<PlantaSeparadora> plantasSeparadorasIterator = plantasSeparadorasCompletadas.iterator();
@@ -55,9 +55,9 @@ public class ReguladorPlantaSeparadora implements Regulador {
             PlantaSeparadoraEnConstruccion plantaEnConstruccion = plantasEnConstruccionIterator.next();
             plantaEnConstruccion.avanzarDiaConstruccion();
             if(plantaEnConstruccion.construccionTerminada()){
-                //El numero de las plantas se genera secuencialmente a partir de 0
+                //El numeroTanque de las plantas se genera secuencialmente a partir de 0
                 int numeroNuevaPlanta = plantasSeparadorasCompletadas.size();
-                PlantaSeparadora nuevaPlanta = new PlantaSeparadora(new Logger(), numeroNuevaPlanta, capacidadNuevasPlantas);
+                PlantaSeparadora nuevaPlanta = new PlantaSeparadora(numeroNuevaPlanta, capacidadNuevasPlantas, new Logger());
                 plantasEnConstruccionIterator.remove();
                 plantasSeparadorasCompletadas.add(nuevaPlanta);
             }

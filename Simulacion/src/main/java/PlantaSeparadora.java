@@ -3,14 +3,14 @@
  */
 public class PlantaSeparadora {
 
-    private Logger logger;
     int numeroPlanta;
     private double capacidadProcesamiento;
+    private Logger logger;
 
-    public PlantaSeparadora(Logger logger, int numeroPlanta, double capacidadProcesamiento) {
-        this.logger = logger;
+    public PlantaSeparadora(int numeroPlanta, double capacidadProcesamiento, Logger logger) {
         this.numeroPlanta = numeroPlanta;
         this.capacidadProcesamiento = capacidadProcesamiento;
+        this.logger = logger;
     }
 
     public void separar(double unVolumen) {
