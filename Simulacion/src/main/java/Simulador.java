@@ -31,6 +31,16 @@ public class Simulador {
                 new ReguladorTanque(),
                 new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()),
                 new ReguladorPlantaSeparadora(),
+                reservorio);
+    }
+
+    public Simulador(ReguladorTanque reguladorTanqueAgua, ReguladorTanque reguladorTanqueGas,
+                     ReguladorPozo reguladorPozo, ReguladorPlantaSeparadora reguladorPlantaSeparadora,
+                     Reservorio reservorio){
+        this(  reguladorTanqueAgua,
+                reguladorTanqueGas,
+                reguladorPozo,
+                reguladorPlantaSeparadora,
                 new PoliticaSiempreTenerUnRIG(),
                 new PoliticaExcavarPorMenorTiempoRequerido(),
                 new PoliticaConstruirTanquesADemanda(),

@@ -22,7 +22,7 @@ public class Pozo {
     public void extraer(double unVolumen, double volumenInicial, double volumenAntesExtraccion,
                         int pozosHabilitados){
         assert(unVolumen <= potencialDeVolumenDiario(pozosHabilitados));
-        assert(volumenAntesExtraccion - unVolumen>= 0);
+        assert(volumenAntesExtraccion - unVolumen >= 0);
         actualizarPresionBocaDePozo(
                 volumenInicial, volumenAntesExtraccion - unVolumen,
                 pozosHabilitados
