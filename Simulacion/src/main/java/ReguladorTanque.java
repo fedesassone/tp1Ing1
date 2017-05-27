@@ -54,10 +54,15 @@ public class ReguladorTanque implements Regulador {
         }
     }
 
-    public void comprarTanque(){
-        //FIXME: Se necesita el logger para loggear la compra del tanque?
+    public TanqueEnConstruccion comprarTanque(){
         //FIXME: De donde se obtiene el precio del tanque comprado?
-        tanquesEnConstruccion.add(new TanqueEnConstruccion(diasConstruccionTanques));
+        TanqueEnConstruccion nuevoTanque = new TanqueEnConstruccion(diasConstruccionTanques, capacidadNuevosTanques);
+        tanquesEnConstruccion.add(nuevoTanque);
+        return nuevoTanque;
+    }
+
+    public int cantidadTanquesEnConstruccion(){
+        return this.tanquesEnConstruccion.size();
     }
 
     public double capacidadDeAlmacenamientoTotal(){
@@ -67,6 +72,15 @@ public class ReguladorTanque implements Regulador {
         }
         return capacidadTotal;
     }
+
+    public double futuraCapacidadAlmacenamientoTotal(){
+        double capacidadTotal = capacidadDeAlmacenamientoTotal();
+        for(TanqueEnConstruccion tanque : tanquesEnConstruccion){
+            capacidadTotal += tanque.capacidad();
+        }
+        return capacidadTotal;
+    }
+
 
     public void avanzarDiaConstrucciones(){
         Iterator<TanqueEnConstruccion> tanquesEnConstruccionIterator =
