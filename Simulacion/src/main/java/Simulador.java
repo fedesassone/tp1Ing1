@@ -27,10 +27,19 @@ public class Simulador {
 
     //Constructor con politicas y reguladores por defecto
     public Simulador(Reservorio reservorio){
-        this(  new ReguladorTanque(), new ReguladorTanque(), new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()), new ReguladorPlantaSeparadora(),
-                new PoliticaSiempreTenerUnRIG(), new PoliticaExcavarPorMenorTiempoRequerido(), new PoliticaConstruirTanquesADemanda(),
-                new PoliticaConstruirPlantasADemanda(), new PoliticaNoVenderGas(), new PoliticaReinyectarTodoPorPresionCritica(),
-                new PoliticaExtraerPozosAleatorios(), new PoliticaFinalizarPorDilucionCritica(), reservorio);
+        this(  new ReguladorTanque(),
+                new ReguladorTanque(),
+                new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()),
+                new ReguladorPlantaSeparadora(),
+                new PoliticaSiempreTenerUnRIG(),
+                new PoliticaExcavarPorMenorTiempoRequerido(),
+                new PoliticaConstruirTanquesADemanda(),
+                new PoliticaConstruirPlantasADemanda(),
+                new PoliticaNoVenderGas(),
+                new PoliticaReinyectarTodoPorPresionCritica(),
+                new PoliticaExtraerPozosAleatorios(new ParametrosSimulacion().numeroMaximaPozosAAbrirPorDia),
+                new PoliticaFinalizarPorDilucionCritica(),
+                reservorio);
     }
 
     public Simulador(ReguladorTanque reguladorTanqueGas, ReguladorTanque reguladorTanqueAgua, ReguladorPozo reguladorPozo, ReguladorPlantaSeparadora reguladorPlantaSeparadora,
