@@ -31,19 +31,15 @@ public class Reservorio {
         return volumenR;
     }
 
-    //FIXME: Se puede reinyectar de a mas de a un producto? Segun como estan escritas las formulas parece que no
-    public void reinyectar(double unVolumenAReinyectar, TipoDeProducto productoReinyectado){
-        assert(volumenGlobalReinyectado + unVolumenAReinyectar < volumenGlobalExtraido);
+    //FIXME: Se puede actualizarPresionPorReinyeccion de a mas de a un producto? Segun como estan escritas las formulas parece que no
+    public void reinyectar(double unVolumenAReinyectarAgua, double unVolumenAReinyectarGas){
+        double volumenTotalReinyectado = unVolumenAReinyectarAgua + unVolumenAReinyectarGas;
+        assert(volumenGlobalReinyectado + volumenTotalReinyectado < volumenGlobalExtraido);
 
-        proporcionDePetroleo = proporcionElementoNoInyectadoAlReinyectar(proporcionDePetroleo, unVolumenAReinyectar);
-        if(productoReinyectado == TipoDeProducto.AGUA){
-            proporcionDeGas = proporcionElementoNoInyectadoAlReinyectar(proporcionDeGas, unVolumenAReinyectar);
-            proporcionDeAgua = proporcionElementoInyectadoAlReinyectar(proporcionDeAgua, unVolumenAReinyectar);
-        } else if(productoReinyectado == TipoDeProducto.GAS){
-            proporcionDeGas = proporcionElementoInyectadoAlReinyectar(proporcionDeGas, unVolumenAReinyectar);
-            proporcionDeAgua = proporcionElementoNoInyectadoAlReinyectar(proporcionDeAgua, unVolumenAReinyectar);
-        }
-        volumenGlobalReinyectado += unVolumenAReinyectar;
+        proporcionDePetroleo = proporcionElementoAlReinyectar(proporcionDePetroleo, 0, volumenTotalReinyectado);
+        proporcionDeGas = proporcionElementoAlReinyectar(proporcionDeGas, unVolumenAReinyectarGas, volumenTotalReinyectado);
+        proporcionDeAgua = proporcionElementoAlReinyectar(proporcionDeAgua, unVolumenAReinyectarAgua, volumenTotalReinyectado);
+        volumenGlobalReinyectado += volumenTotalReinyectado;
     }
 
     public void extraer(double unVolumen){
@@ -53,18 +49,12 @@ public class Reservorio {
     //FIXME: En el enunciado dice que se podria cambiar esta formula, deberíamos abstraerla?
     //FIXME: Estas formulas no son exactamente las del enunciado (no se entienden las del enunciado,
     //       las escritas aca son las que tiene sentido que sean)
-    //Formula 4 del enunciado (aplicada a los elementos de los que no se reinyecta)
-    private double proporcionElementoNoInyectadoAlReinyectar(double proporcionViejaProducto,
-                                                             double volumenReinyectado){
-        return (proporcionViejaProducto * volumenActual()) /
-                (volumenActual() + volumenReinyectado);
-    }
-
-    //Formula 4 del enunciado (aplicada a los elementos que se reinyecta)
-    private double proporcionElementoInyectadoAlReinyectar(double proporcionViejaProducto,
-                                                           double volumenReinyectado){
-        return (proporcionViejaProducto * volumenActual() + volumenReinyectado) /
-                (volumenActual() + volumenReinyectado);
+    //Formula 4 del enunciado
+    private double proporcionElementoAlReinyectar(double proporcionViejaProducto,
+                                                  double volumenReinyectadoEsteProducto,
+                                                  double volumenReinyectadoTotal){
+        return (proporcionViejaProducto * volumenActual() + volumenReinyectadoEsteProducto) /
+                (volumenActual() + volumenReinyectadoTotal);
     }
 
 }

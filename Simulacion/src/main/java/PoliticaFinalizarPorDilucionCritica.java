@@ -6,7 +6,7 @@ public class PoliticaFinalizarPorDilucionCritica implements PoliticaFinalizacion
         this.dilucionCriticaPetroleo = dilucionCriticaPetroleo;
     }
 
-    public boolean finalizarSimulacion(Simulador unSimulador){
+    public boolean hayQueFinalizarSimulacion(Simulador unSimulador){
         return unSimulador.reservorio.proporcionDePetroleo < dilucionCriticaPetroleo;
     }
 

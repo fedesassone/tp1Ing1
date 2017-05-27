@@ -20,7 +20,11 @@ public final class ParametrosSimulacion {
     public static int diasConstruccionTanques = 10;
 
     //Constantes sobre politicas
+    //Por politica extraccion
     public static int numeroMaximaPozosAAbrirPorDia = 10;
+    //Por politica reinyeccion
+    public static double presionCriticaPozos = 10;
+    //Por politica finalizacion
     public static double dilucionCriticaPetroleo = 0.35; //Valor tipico: 0.35
 
     //Parametros Rigs

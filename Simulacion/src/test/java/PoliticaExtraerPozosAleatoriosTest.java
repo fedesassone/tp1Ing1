@@ -13,9 +13,9 @@ public class PoliticaExtraerPozosAleatoriosTest {
         int numeroTanquesGas = 1;
         int numeroTanquesAgua = 1;
         List<Pozo> pozosCompletados = new LinkedList<Pozo>();
-        pozosCompletados.add(new Pozo(1, 150, new Logger()));
-        pozosCompletados.add(new Pozo(2, 150, new Logger()));
-        pozosCompletados.add(new Pozo(3, 150, new Logger()));
+        pozosCompletados.add(new Pozo(1, 150, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
+        pozosCompletados.add(new Pozo(2, 150, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
+        pozosCompletados.add(new Pozo(3, 150, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
         ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
