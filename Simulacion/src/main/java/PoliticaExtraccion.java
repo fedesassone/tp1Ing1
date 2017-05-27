@@ -4,19 +4,12 @@ import java.util.Optional;
 
 public abstract class PoliticaExtraccion implements Politica {
 
-    //FIXME: Agregar tests
     void aplicarPolitica(Simulador unSimulador){
         //Obtenemos los parametros necesarios para la aplicacion
         List<Pozo> pozosSinExtraccionDiaria = new LinkedList<Pozo>(unSimulador.reguladorPozo.damePozosCompletados());
-        double capacidadSeparacionTotal = unSimulador.reguladorPlantaSeparadora.capacidadDeSeparacionTotal();
-        double capacidadAlmacenamientoGasTotal = unSimulador.reguladorTanqueGas.capacidadDeAlmacenamientoTotal();
-        double capacidadAlmacenamientoAguaTotal = unSimulador.reguladorTanqueAgua.capacidadDeAlmacenamientoTotal();
 
-        double capacidadExtraccionTotal = capacidadExtraccionMaxima(
-                capacidadSeparacionTotal, capacidadAlmacenamientoGasTotal, capacidadAlmacenamientoAguaTotal,
-                unSimulador.reservorio.proporcionDeGas, unSimulador.reservorio.proporcionDeAgua,
-                unSimulador.reservorio.volumenActual());
-        int numeroPozosAExtraer = numeroPozosAHabilitar(unSimulador);
+        double capacidadExtraccionMaxima = capacidadExtraccionMaxima(unSimulador);
+        int numeroPozosAHabilitar = numeroPozosAHabilitar(unSimulador);
 
         double volumenTotalExtraido = 0;
         while(true){
@@ -30,13 +23,14 @@ public abstract class PoliticaExtraccion implements Politica {
             pozosSinExtraccionDiaria.remove(pozoSiguiente);
 
             //Se obtiene el volumen a extraer del pozo
-            double capacidadExtraccionPozo = pozoSiguiente.potencialDeVolumenDiario(numeroPozosAExtraer);
-            double volumenAExtraer = volumenAExtraer(capacidadExtraccionTotal, capacidadExtraccionPozo);
+            double capacidadExtraccionPozo = pozoSiguiente.potencialDeVolumenDiario(numeroPozosAHabilitar);
+            double volumenAExtraer = volumenAExtraer(capacidadExtraccionMaxima, capacidadExtraccionPozo);
             volumenTotalExtraido += volumenAExtraer;
+            capacidadExtraccionMaxima -= volumenAExtraer;
 
             //Se realiza la extraccion
             pozoSiguiente.extraer(volumenAExtraer, unSimulador.reservorio.volumenInicial(),
-                    unSimulador.reservorio.volumenActual(), numeroPozosAExtraer);
+                    unSimulador.reservorio.volumenActual(), numeroPozosAHabilitar);
             unSimulador.reservorio.extraer(volumenAExtraer);
         }
 
@@ -51,20 +45,19 @@ public abstract class PoliticaExtraccion implements Politica {
 
     abstract int numeroPozosAHabilitar(Simulador unSimulador);
 
-    abstract Optional<Pozo> siguiente(List<Pozo> pozos, Simulador unSimulador);
+    abstract Optional<Pozo> siguiente(List<Pozo> pozosNoUsados, Simulador unSimulador);
 
     abstract double volumenAExtraer(double unaCapacidadExtraccionTotal, double unaCapacidadExtraccion);
 
-    private double capacidadExtraccionMaxima(double unaCapacidadSeparacionTotal,
-                                             double unaCapacidadAlmacenamientoGasTotal,
-                                             double unaCapacidadAlmacenamientoAguaTotal,
-                                             double proporcionGas,
-                                             double proporcionAgua,
-                                             double volumenActual){
-        double extraccionMaximaPorTanquesGas = unaCapacidadAlmacenamientoGasTotal / proporcionGas;
-        double extraccionMaximaPorTanquesAgua = unaCapacidadAlmacenamientoAguaTotal / proporcionAgua;
-        return Math.min(volumenActual,
-                Math.min(unaCapacidadSeparacionTotal,
+    private double capacidadExtraccionMaxima(Simulador simulador){
+        double capacidadSeparacionTotal = simulador.reguladorPlantaSeparadora.capacidadDeSeparacionTotal();
+        double capacidadAlmacenamientoGasTotal = simulador.reguladorTanqueGas.capacidadDeAlmacenamientoTotal();
+        double capacidadAlmacenamientoAguaTotal = simulador.reguladorTanqueAgua.capacidadDeAlmacenamientoTotal();
+
+        double extraccionMaximaPorTanquesGas = capacidadAlmacenamientoGasTotal / simulador.reservorio.proporcionDeGas;
+        double extraccionMaximaPorTanquesAgua = capacidadAlmacenamientoAguaTotal / simulador.reservorio.proporcionDeAgua;
+        return Math.min(simulador.reservorio.volumenActual(),
+                Math.min(capacidadSeparacionTotal,
                   Math.min(extraccionMaximaPorTanquesAgua, extraccionMaximaPorTanquesGas)));
     }
 
