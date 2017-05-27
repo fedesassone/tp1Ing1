@@ -4,7 +4,8 @@ import java.util.List;
 public class Simulador {
 
     //Reguladores
-    ReguladorTanque reguladorTanque;
+    ReguladorTanque reguladorTanqueGas;
+    ReguladorTanque reguladorTanqueAgua;
     ReguladorPozo reguladorPozo;
     ReguladorPlantaSeparadora reguladorPlantaSeparadora;
 
@@ -26,18 +27,19 @@ public class Simulador {
 
     //Constructor con politicas y reguladores por defecto
     public Simulador(Reservorio reservorio){
-        this(  new ReguladorTanque(), new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()), new ReguladorPlantaSeparadora(),
+        this(  new ReguladorTanque(), new ReguladorTanque(), new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()), new ReguladorPlantaSeparadora(),
                 new PoliticaSiempreTenerUnRIG(), new PoliticaExcavarPorMenorTiempoRequerido(), new PoliticaConstruirTanquesADemanda(),
                 new PoliticaConstruirPlantasADemanda(), new PoliticaNoVenderGas(), new PoliticaReinyectarTodoPorPresionCritica(),
                 new PoliticaExtraerPozosAleatorios(), new PoliticaFinalizarPorDilucionCritica(), reservorio);
     }
 
-    public Simulador(ReguladorTanque reguladorTanque, ReguladorPozo reguladorPozo, ReguladorPlantaSeparadora reguladorPlantaSeparadora,
+    public Simulador(ReguladorTanque reguladorTanqueGas, ReguladorTanque reguladorTanqueAgua, ReguladorPozo reguladorPozo, ReguladorPlantaSeparadora reguladorPlantaSeparadora,
                      PoliticaCompraDeRIGs politicaCompraDeRIGs, PoliticaExcavacion politicaExcavacion, PoliticaConstruccionDeTanques politicaConstruccionDeTanques,
                      PoliticaConstruccionDePlantas politicaConstruccionDePlantas, PoliticaVentaDeGas politicaVentaDeGas, PoliticaReinyeccion politicaReinyeccion,
                      PoliticaExtraccion politicaExtraccion, PoliticaFinalizacion politicaFinalizacion,
                      Reservorio reservorio) {
-        this.reguladorTanque = reguladorTanque;
+        this.reguladorTanqueGas = reguladorTanqueGas;
+        this.reguladorTanqueAgua = reguladorTanqueAgua;
         this.reguladorPozo = reguladorPozo;
         this.reguladorPlantaSeparadora = reguladorPlantaSeparadora;
         this.politicaCompraDeRIGs = politicaCompraDeRIGs;
@@ -60,7 +62,8 @@ public class Simulador {
 
     public void avanzarDiaDeConstrucciones(){
         reguladorPlantaSeparadora.avanzarDiaConstrucciones();
-        reguladorTanque.avanzarDiaConstrucciones();
+        reguladorTanqueAgua.avanzarDiaConstrucciones();
+        reguladorTanqueGas.avanzarDiaConstrucciones();
     }
 
 }

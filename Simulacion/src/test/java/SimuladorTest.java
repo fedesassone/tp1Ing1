@@ -9,8 +9,10 @@ public class SimuladorTest {
         Simulador simulador = new Simulador(reservorio);
 
         //Comenzamos construccion de tanques y plantas separadoras
-        simulador.reguladorTanque.comprarTanque();
-        simulador.reguladorTanque.comprarTanque();
+        simulador.reguladorTanqueAgua.comprarTanque();
+
+        simulador.reguladorTanqueGas.comprarTanque();
+        simulador.reguladorTanqueGas.comprarTanque();
 
         simulador.reguladorPlantaSeparadora.comprarPlantaSeparadora();
         simulador.reguladorPlantaSeparadora.comprarPlantaSeparadora();
@@ -19,9 +21,15 @@ public class SimuladorTest {
         int tiempoConstruccionElementos = Math.max(params.diasConstruccionPlantas, params.diasConstruccionTanques);
         for (int i = 0; i < tiempoConstruccionElementos + 1; i++) {
             if(i > params.diasConstruccionTanques){
-                assert(simulador.reguladorTanque.dameTanquesCompletados().size() == 2);
+                assert(simulador.reguladorTanqueAgua.dameTanquesCompletados().size() == 1);
             } else {
-                assert(simulador.reguladorTanque.dameTanquesCompletados().size() == 0);
+                assert(simulador.reguladorTanqueAgua.dameTanquesCompletados().size() == 0);
+            }
+
+            if(i > params.diasConstruccionTanques){
+                assert(simulador.reguladorTanqueGas.dameTanquesCompletados().size() == 2);
+            } else {
+                assert(simulador.reguladorTanqueGas.dameTanquesCompletados().size() == 0);
             }
 
             if(i > params.diasConstruccionPlantas){
