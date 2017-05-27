@@ -22,4 +22,9 @@ public final class ParametrosSimulacion {
     //Constantes sobre politicas
     public static int numeroMaximaPozosAAbrirPorDia = 10;
 
+    //Parametros Rigs
+    public static int RIG_BASICO_PODER_EXCAVACION = 100;
+    public static int RIG_BASICO_COSTO = 100;
+    public static int COMBUSTIBLE_COSTO = 100;
+
 }
