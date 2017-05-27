@@ -45,7 +45,7 @@ public class Simulador {
                 reguladorPlantaSeparadora,
                 new PoliticaSiempreTenerUnRIG(),
                 new PoliticaExcavarPorMenorTiempoRequerido(),
-                new PoliticaComprarTanquesADemanda(),
+                new PoliticaComprarTanquesADemanda(logger),
                 new PoliticaComprarPlantasADemanda(logger),
                 new PoliticaNoVenderGas(),
                 new PoliticaReinyectarPorPresionCritica(new ParametrosSimulacion().presionCriticaPozos, new CalculadorPresionPorReinyeccionImpl()),

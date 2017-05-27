@@ -9,6 +9,7 @@ public class PoliticaComprarPlantasADemanda implements PoliticaCompraDePlantas {
 
 
     public void aplicarPolitica(Simulador unSimulador){
+        //TODO: cuerpo del codigo repetido entre este método y aplicarPolitica de PoliticaComprarTanquesADemanda
         ReguladorPlantaSeparadora elReguladorDePlantas = unSimulador.reguladorPlantaSeparadora;
         ReguladorPozo elReguladorDePozos = unSimulador.reguladorPozo;
         int pozosCompletados = elReguladorDePozos.cantidadPozosCompletados();
