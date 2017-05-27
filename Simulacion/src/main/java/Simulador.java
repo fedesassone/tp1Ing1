@@ -29,8 +29,8 @@ public class Simulador {
 
     //Constructor con politicas y reguladores por defecto
     public Simulador(Reservorio reservorio, Logger logger){
-        this(  new ReguladorTanque(),
-                new ReguladorTanque(),
+        this(  new ReguladorTanque(TipoDeProducto.AGUA),
+                new ReguladorTanque(TipoDeProducto.GAS),
                 new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()),
                 new ReguladorPlantaSeparadora(),
                 reservorio,logger);
@@ -50,11 +50,11 @@ public class Simulador {
                 new PoliticaNoVenderGas(),
                 new PoliticaReinyectarTodoPorPresionCritica(),
                 new PoliticaExtraerPozosAleatorios(new ParametrosSimulacion().numeroMaximaPozosAAbrirPorDia),
-                new PoliticaFinalizarPorDilucionCritica(),
+                new PoliticaFinalizarPorDilucionCritica(new ParametrosSimulacion().dilucionCriticaPetroleo),
                 reservorio,logger);
     }
 
-    public Simulador(ReguladorTanque reguladorTanqueGas, ReguladorTanque reguladorTanqueAgua, ReguladorPozo reguladorPozo, ReguladorPlantaSeparadora reguladorPlantaSeparadora,
+    public Simulador(ReguladorTanque reguladorTanqueAgua, ReguladorTanque reguladorTanqueGas, ReguladorPozo reguladorPozo, ReguladorPlantaSeparadora reguladorPlantaSeparadora,
                      PoliticaCompraDeRIGs politicaCompraDeRIGs, PoliticaExcavacion politicaExcavacion, PoliticaCompraDeTanques politicaCompraDeTanques,
                      PoliticaCompraDePlantas politicaCompraDePlantas, PoliticaVentaDeGas politicaVentaDeGas, PoliticaReinyeccion politicaReinyeccion,
                      PoliticaExtraccion politicaExtraccion, PoliticaFinalizacion politicaFinalizacion,

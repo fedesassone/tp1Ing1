@@ -7,7 +7,7 @@ public class TanqueTest {
 
     @Test
     public void testAlmacenamiento(){
-        Tanque tanque = new Tanque(2, 1000, new Logger());
+        Tanque tanque = new Tanque(2, 1000, TipoDeProducto.AGUA, new Logger());
 
         //Utilizamos parte del tanque para almacenamiento
         tanque.almacenar(400);
