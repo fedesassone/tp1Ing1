@@ -1,5 +1,3 @@
-/**
- * Created by federico on 25/05/17.
- */
+//Es necesaria? Que iria en esta?
 public interface Regulador {
 }

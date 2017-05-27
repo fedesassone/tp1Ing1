@@ -10,6 +10,7 @@ public class Pozo {
         this.presionActualBocaDePozo = presionActualBocaDePozo; //presion inicial : [3000, 3500]
     }
 
+    //FIXME: No se deberían obtener los alphas de los parametros de la simulación?
     public double potencialDeVolumenDiario(double alphaUno, double alphaDos, int pozosHabilitados){
         return alphaUno * (presionActualBocaDePozo /pozosHabilitados) +
                 alphaDos * Math.pow(presionActualBocaDePozo /pozosHabilitados, 2);

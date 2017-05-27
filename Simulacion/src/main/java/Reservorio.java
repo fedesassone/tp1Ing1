@@ -32,14 +32,14 @@ public class Reservorio {
     }
 
     //FIXME: Se puede reinyectar de a mas de a un producto? Segun como estan escritas las formulas parece que no
-    public void reinyectar(double unVolumenAReinyectar, String producto){
+    public void reinyectar(double unVolumenAReinyectar, TipoDeProducto productoReinyectado){
         assert(volumenGlobalReinyectado + unVolumenAReinyectar < volumenGlobalExtraido);
 
         proporcionDePetroleo = proporcionElementoNoInyectadoAlReinyectar(proporcionDePetroleo, unVolumenAReinyectar);
-        if(producto.equals("Agua")){
+        if(productoReinyectado == TipoDeProducto.AGUA){
             proporcionDeGas = proporcionElementoNoInyectadoAlReinyectar(proporcionDeGas, unVolumenAReinyectar);
             proporcionDeAgua = proporcionElementoInyectadoAlReinyectar(proporcionDeAgua, unVolumenAReinyectar);
-        } else if(producto.equals("Gas")){
+        } else if(productoReinyectado == TipoDeProducto.GAS){
             proporcionDeGas = proporcionElementoInyectadoAlReinyectar(proporcionDeGas, unVolumenAReinyectar);
             proporcionDeAgua = proporcionElementoNoInyectadoAlReinyectar(proporcionDeAgua, unVolumenAReinyectar);
         }

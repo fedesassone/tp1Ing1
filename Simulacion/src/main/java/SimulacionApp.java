@@ -1,14 +1,16 @@
+import java.util.LinkedList;
+
 class SimulacionApp {
     //FIXME: Completar
     public static void main(String[] args) {
-        //Obtenemos los reguladores
-        ReguladorPozo reguladorPozo = new ReguladorPozo();
-        ReguladorPlantaSeparadora reguladorPlantaSeparadora = new ReguladorPlantaSeparadora();
-        ReguladorTanque reguladorTanquesGas = new ReguladorTanque();
-        ReguladorTanque reguladorTanquesAgua = new ReguladorTanque();
+        ParametrosSimulacion params = new ParametrosSimulacion();
 
-        //Obtenemos las politicas
+        Reservorio reservorio = new Reservorio(
+                params.proporcionGas,
+                params.proporcionAgua,
+                params.proporcionPetroleo,
+                params.volumenInicial);
 
-        Simulador simulador = new Simulador();
+        Simulador simulador = new Simulador(reservorio);
     }
 }
