@@ -105,8 +105,6 @@ public class Simulador {
         avanzarDiaDeConstrucciones();
         //TODO: simOil.Politica compra de RIGS
         //TODO: simOil.Politica compra de excavacion
-        //TODO: simOil.Politica compra de tanques
-        //TODO: simOil.Politica compra de plantas
         politicaVentaDeGas.realizarVentaDeGas(this);
         if(politicaReinyeccion.hayQueReinyectar(this)){
             politicaReinyeccion.realizarReinyeccion(this);

@@ -3,18 +3,27 @@ package simOil.reguladores;
 import simOil.Parcela;
 import simOil.Pozo;
 import simOil.PozoEnExcavacion;
+import simOil.logger.Logger;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ReguladorPozo implements Regulador {
-
+    private int ultimoPozoAgregado;
     private List<Pozo> pozosCompletados;
     private List<PozoEnExcavacion> pozosEnExcavacion;
+    Logger logger;
 
     //FIXME: Se pueden pasarle pozos ya completados al regulador?
     public ReguladorPozo(List<Pozo> pozosCompletados, List<PozoEnExcavacion> pozosEnExcavacion) {
         this.pozosCompletados = pozosCompletados;
         this.pozosEnExcavacion = pozosEnExcavacion;
+    }
+
+    public ReguladorPozo(){
+        this.ultimoPozoAgregado = 0;
+        this.pozosCompletados = new LinkedList<Pozo>();
+        this.pozosEnExcavacion = new LinkedList<PozoEnExcavacion>();
     }
 
     public List<Pozo> damePozosCompletados() {
@@ -35,6 +44,13 @@ public class ReguladorPozo implements Regulador {
         pozosEnExcavacion.add(pozoEnExcavacion);
     }
 
+    public void nuevoPozoCompletado(PozoEnExcavacion pozoExcavado){
+        Parcela parcelaAsignada = pozoExcavado.parcela();
+
+        Pozo nuevoPozo = new Pozo(ultimoPozoAgregado, parcelaAsignada.presionInicialBocaDePozo(),parcelaAsignada.calculadorDePresionPorReinyeccion(), logger);
+        this.pozosCompletados.add(nuevoPozo);
+        ultimoPozoAgregado++;
+    }
     public void actualizarPresionPozosPorReinyeccion(double volumenInicial, double volumenAntesReinyeccion,
                                                      double volumenReinyectado) {
         for (Pozo pozo: pozosCompletados){
@@ -48,6 +64,11 @@ public class ReguladorPozo implements Regulador {
             capacidadTotal += pozo.potencialDeVolumenDiario(pozosHabilitados);
         }
         return capacidadTotal;
+    }
+
+    public void actualizarPozosEnExacavacion(List<PozoEnExcavacion> listaDePozos){
+
+        this.pozosEnExcavacion = listaDePozos;
     }
 
     //FIXME: Es necesaria? La excavacion no es por dia, depende de los RIGs que se tiene
