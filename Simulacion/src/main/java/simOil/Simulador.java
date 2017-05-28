@@ -27,10 +27,12 @@ public class Simulador {
     private PoliticaReinyeccion politicaReinyeccion;
     private PoliticaExtraccion politicaExtraccion;
     private PoliticaFinalizacion politicaFinalizacion;
+
+    //Logger
     private Logger logger;
-    //private PoliticaCompraPlantas politicaCompraPlantas;
 
     //Objetos del yacimiento
+    public int numeroDeDia;
     public Reservorio reservorio;
     public List<Parcela> parcelasNoExcavadas;
     public List<Parcela> parcelasExcavacionEmpezada;
@@ -68,10 +70,13 @@ public class Simulador {
                      PoliticaCompraDePlantas politicaCompraDePlantas, PoliticaVentaDeGas politicaVentaDeGas, PoliticaReinyeccion politicaReinyeccion,
                      PoliticaExtraccion politicaExtraccion, PoliticaFinalizacion politicaFinalizacion,
                      Reservorio reservorio, Logger logger) {
+        //Reguladores
         this.reguladorTanqueGas = reguladorTanqueGas;
         this.reguladorTanqueAgua = reguladorTanqueAgua;
         this.reguladorPozo = reguladorPozo;
         this.reguladorPlantaSeparadora = reguladorPlantaSeparadora;
+
+        //Politicas
         this.politicaCompraDeRIGs = politicaCompraDeRIGs;
         this.politicaExcavacion = politicaExcavacion;
         this.politicaCompraDeTanques = politicaCompraDeTanques;
@@ -80,15 +85,23 @@ public class Simulador {
         this.politicaReinyeccion = politicaReinyeccion;
         this.politicaExtraccion = politicaExtraccion;
         this.politicaFinalizacion = politicaFinalizacion;
+
+        //Objetos yacimiento
+        this.numeroDeDia = 0;
         this.reservorio = reservorio;
         this.parcelasNoExcavadas = new LinkedList<Parcela>();
         this.parcelasExcavacionEmpezada = new LinkedList<Parcela>();
         this.rigsAlquilados = new LinkedList<RIG>();
+
+        //Logger
         this.logger = logger;
     }
 
     //FIXME: Queda medio raro que devuelva un booleano y que tenga ese nombre la funcion...
+    //       A lo mejor dividir esta en simularUnNuevo dia y finalizar ejecucion?
     public boolean simularUnNuevoDia(){
+        logger.loguear("Comenzo simulacion del dia numero " + numeroDeDia);
+        numeroDeDia ++;
         avanzarDiaDeConstrucciones();
         //TODO: simOil.Politica compra de RIGS
         //TODO: simOil.Politica compra de excavacion
