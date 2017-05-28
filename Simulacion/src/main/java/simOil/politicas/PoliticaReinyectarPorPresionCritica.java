@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * Politica:
  *      Se reinyecta cuanta agua y gas sea necesario (de acuerdo a la estrategia mencionada a
- *      continuacion) hasta que todos los pozos tengan una presion no menor a presionCritica.
+ *      continuacion) hasta que todos los pozos tengan una presion no menor a presionCritica
+ *      (respetando la restriccion de volumen para la reinyeccion).
  *      Para la reinyeccion del valor seleccionado:
  *          1. Se reinyecta agua de los tanques, ya que su unica funcionalidad es para la reinyeccion
  *          2. Si el agua no alcanza se reinyecta gas de los tanques

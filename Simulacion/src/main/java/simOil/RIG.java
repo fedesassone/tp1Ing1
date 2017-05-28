@@ -3,7 +3,7 @@ package simOil;
 public class RIG {
     int id;
     int poderDeExcavacionDiario;
-    int combustibleActual;
+    int combustibleActual; //FIXME: Manejamos en algun lado esto? No seria el costo por combustible o en el enunciado habla de esto?
     int diasRestantesDeUso;
 
     public RIG(int id, int poderDeExcavacionDiario, int combustibleActual, int diasRestantesDeUso) {

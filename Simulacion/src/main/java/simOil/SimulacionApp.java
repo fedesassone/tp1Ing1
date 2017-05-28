@@ -8,12 +8,13 @@ class SimulacionApp {
     public static void main(String[] args) {
         ParametrosSimulacion params = new ParametrosSimulacion();
 
+        Logger logger = new LoggerAConsola();
         Reservorio reservorio = new Reservorio(
                 params.proporcionGas,
                 params.proporcionAgua,
                 params.proporcionPetroleo,
-                params.volumenInicial);
-        Logger logger = new LoggerAConsola();
+                params.volumenInicial,
+                logger);
         Simulador simulador = new Simulador(reservorio, logger);
     }
 }

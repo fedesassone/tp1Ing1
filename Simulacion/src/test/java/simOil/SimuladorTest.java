@@ -9,7 +9,7 @@ public class SimuladorTest {
     @Test
     public void testAvanzarDiaConstrucciones(){
         ParametrosSimulacion params = new ParametrosSimulacion();
-        Reservorio reservorio = new Reservorio(0.3, 0.2, 0.5, 1000);
+        Reservorio reservorio = new Reservorio(0.3, 0.2, 0.5, 1000, new LoggerAConsola());
         Logger logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reservorio, logger);
 

@@ -27,7 +27,7 @@ class PoliticaFinalizarPorDilucionCriticaTest {
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
         ReguladorTanque reguladorTanqueAgua = new Fixtures().reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
-        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000);
+        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000, new LoggerAConsola());
         LoggerAConsola logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
@@ -50,7 +50,7 @@ class PoliticaFinalizarPorDilucionCriticaTest {
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
         ReguladorTanque reguladorTanqueAgua = new Fixtures().reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
-        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000);
+        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000, new LoggerAConsola());
         LoggerAConsola logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);

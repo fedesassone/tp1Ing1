@@ -1,13 +1,14 @@
 package simOil;
 import org.junit.jupiter.api.Test;
 import simOil.Reservorio;
+import simOil.logger.LoggerAConsola;
 
 public class ReservorioTest {
 
     @Test
     public void testVolumenesDelReservorio(){
         double volumenInicialReservorio = 1000;
-        Reservorio reservorio = new Reservorio(0.3, 0.2, 0.5, volumenInicialReservorio);
+        Reservorio reservorio = new Reservorio(0.3, 0.2, 0.5, volumenInicialReservorio, new LoggerAConsola());
 
         assert(reservorio.volumenInicial() == volumenInicialReservorio);
         assert(reservorio.volumenActual() == volumenInicialReservorio);
@@ -38,7 +39,7 @@ public class ReservorioTest {
     @Test
     public void testProporcionDespuesReinyeccion(){
         double volumenInicialReservorio = 1000;
-        Reservorio reservorio = new Reservorio(0.3, 0.2, 0.5, volumenInicialReservorio);
+        Reservorio reservorio = new Reservorio(0.3, 0.2, 0.5, volumenInicialReservorio, new LoggerAConsola());
 
         double volExtraccion = 500;
         reservorio.extraer(volExtraccion);

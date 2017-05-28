@@ -1,5 +1,7 @@
 package simOil;
 
+import simOil.logger.Logger;
+
 public class Reservorio {
 
     public double proporcionDeGas;
@@ -9,9 +11,10 @@ public class Reservorio {
     private double volumenR;
     private double volumenGlobalExtraido;
     private double volumenGlobalReinyectado;
+    private Logger logger;
 
     public Reservorio(double proporcionDeGas, double proporcionDePetroleo, double proporcionDeAgua,
-                      double volumenR) {
+                      double volumenR, Logger logger) {
         assert((proporcionDeAgua + proporcionDeGas + proporcionDePetroleo) == 1.0);
         this.proporcionDeGas = proporcionDeGas;
         this.proporcionDePetroleo = proporcionDePetroleo;
@@ -19,6 +22,7 @@ public class Reservorio {
         this.volumenR = volumenR;
         this.volumenGlobalExtraido = 0;
         this.volumenGlobalReinyectado = 0;
+        this.logger = logger;
     }
 
     public double volumenActual() {
@@ -35,6 +39,8 @@ public class Reservorio {
 
     //FIXME: Se puede actualizarPresionPorReinyeccion de a mas de a un producto? Segun como estan escritas las formulas parece que no
     public void reinyectar(double unVolumenAReinyectarAgua, double unVolumenAReinyectarGas){
+        logger.loguear("Se reinyecto " + unVolumenAReinyectarAgua + "cm3 de agua y "
+                + unVolumenAReinyectarGas + "cm3 de gas");
         double volumenTotalReinyectado = unVolumenAReinyectarAgua + unVolumenAReinyectarGas;
         assert(volumenGlobalReinyectado + volumenTotalReinyectado <= volumenGlobalExtraido);
 

@@ -58,7 +58,7 @@ public class Fixtures {
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         ReguladorTanque reguladorTanqueGas = reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
         ReguladorTanque reguladorTanqueAgua = reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
-        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000);
+        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000, new LoggerAConsola());
         LoggerAConsola logger = new LoggerAConsola();
         return new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
