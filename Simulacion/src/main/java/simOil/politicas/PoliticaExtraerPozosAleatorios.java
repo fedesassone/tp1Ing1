@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+/**
+ * Politica:
+ *      Diariamente se selecciona de tantos pozos como se pueda que no superen los
+ *      numeroMaximoPozosAHabilitar. Los pozos a utilizar se eligen de manera aleatoria.
+ *
+ */
 public class PoliticaExtraerPozosAleatorios extends PoliticaExtraccion {
 
     private int numeroMaximoPozosAHabilitar;

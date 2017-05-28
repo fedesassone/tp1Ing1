@@ -2,6 +2,9 @@ package simOil.politicas;
 
 import simOil.Simulador;
 
+/**
+ * Politica: Diariamente se vende un porcentaje fijado del gas almacenado en los tanques ese dia
+ */
 public class PoliticaVenderPorcentajeGas implements PoliticaVentaDeGas {
 
     private double porcentajeVentaGas;

@@ -56,7 +56,7 @@ public class Simulador {
                 new PoliticaExcavarPorMenorTiempoRequerido(),
                 new PoliticaComprarTanquesADemanda(logger),
                 new PoliticaComprarPlantasADemanda(logger),
-                new PoliticaNoVenderGas(),
+                new PoliticaVenderPorcentajeGas(new ParametrosSimulacion().porcentajeVentaDiarioGas),
                 new PoliticaReinyectarPorPresionCritica(new ParametrosSimulacion().presionCriticaPozos, new CalculadorPresionPorReinyeccionImpl()),
                 new PoliticaExtraerPozosAleatorios(new ParametrosSimulacion().numeroMaximaPozosAAbrirPorDia),
                 new PoliticaFinalizarPorDilucionCritica(new ParametrosSimulacion().dilucionCriticaPetroleo),

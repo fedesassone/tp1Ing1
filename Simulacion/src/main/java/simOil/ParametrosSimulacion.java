@@ -28,6 +28,8 @@ public final class ParametrosSimulacion {
     public static double presionCriticaPozos = 10;
     //Por politica finalizacion
     public static double dilucionCriticaPetroleo = 0.35; //Valor tipico: 0.35
+    //Por politica venta gas
+    public static double porcentajeVentaDiarioGas = 0.3;
 
     //Parametros Rigs
     public static int RIG_BASICO_PODER_EXCAVACION = 100;
