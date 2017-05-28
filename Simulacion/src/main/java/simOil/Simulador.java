@@ -1,5 +1,6 @@
 package simOil;
 
+import simOil.calculadores.CalculadorPresionPorReinyeccion;
 import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
 import simOil.logger.Logger;
 import simOil.politicas.*;
@@ -133,6 +134,19 @@ public class Simulador {
 
     public void venderPetroleo(double unVolumenAVender) {
         logger.loguear("Se vendio " + unVolumenAVender + "cm3 de petroleo");
+    }
+
+    CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion;
+
+    public void generarParcelasIniciales(){
+        int cantidadParcelas = this.reservorio.area / 10000;
+        for (int i = 0; i<cantidadParcelas; i++) {
+            Parcela nuevaParcela = new Parcela(TipoDeTerreno.TERRENO_TIERRA,
+            ParametrosSimulacion.presionInicialParcelas,
+            ParametrosSimulacion.profundidadTotalParcelas, calculadorPresionPorReinyeccion);
+            this.parcelasNoExcavadas.add(nuevaParcela);
+        }
+        logger.loguear("Se generaron " + cantidadParcelas + " parcelas.");
     }
 
 }

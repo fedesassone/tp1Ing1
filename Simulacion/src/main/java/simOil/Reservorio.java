@@ -4,6 +4,8 @@ import simOil.logger.Logger;
 
 public class Reservorio {
 
+    public int area;
+
     public double proporcionDeGas;
     public double proporcionDePetroleo;
     public double proporcionDeAgua;
@@ -14,7 +16,7 @@ public class Reservorio {
     private Logger logger;
 
     public Reservorio(double proporcionDeGas, double proporcionDePetroleo, double proporcionDeAgua,
-                      double volumenR, Logger logger) {
+                      double volumenR, Logger logger, int area) {
         assert((proporcionDeAgua + proporcionDeGas + proporcionDePetroleo) == 1.0);
         this.proporcionDeGas = proporcionDeGas;
         this.proporcionDePetroleo = proporcionDePetroleo;
@@ -23,6 +25,7 @@ public class Reservorio {
         this.volumenGlobalExtraido = 0;
         this.volumenGlobalReinyectado = 0;
         this.logger = logger;
+        this.area = area;
     }
 
     public double volumenActual() {

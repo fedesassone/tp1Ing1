@@ -1,5 +1,7 @@
 package simOil;
 
+import java.util.List;
+
 //FIXME: Obtener parametros de un archivo?
 public final class ParametrosSimulacion {
 
@@ -8,6 +10,11 @@ public final class ParametrosSimulacion {
     public static double proporcionGas = 0.3;
     public static double proporcionPetroleo = 0.4;
     public static double volumenInicial = 10000000; //Valores tipicos: [10000000..1000000000]
+    public static int areaReservorio = 10000000;
+
+    //Constantes sobre parcelas
+    public static double presionInicialParcelas = 100;
+    public static int profundidadTotalParcelas = 500;
 
     //Constantes sobre pozos
     public static double alpha1 = 0.1; //Valores tipicos: [0.1..0.6]
@@ -34,6 +41,8 @@ public final class ParametrosSimulacion {
     //Parametros Rigs
     public static int RIG_BASICO_PODER_EXCAVACION = 100;
     public static int RIG_BASICO_COSTO = 100;
-    public static int COMBUSTIBLE_COSTO = 100;
+
+    public static int RIG_AVANZADO_PODER_EXCAVACION = 200;
+    public static int RIG_AVANZADO_COSTO = 180;
 
 }

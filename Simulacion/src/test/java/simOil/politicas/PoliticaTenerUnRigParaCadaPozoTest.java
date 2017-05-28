@@ -30,7 +30,7 @@ class PoliticaTenerUnRigParaCadaPozoTest {
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
         ReguladorTanque reguladorTanqueAgua = new Fixtures().reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
 
-        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000, new LoggerAConsola());
+        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000, new LoggerAConsola(), 1000000);
         LoggerAConsola logger = new LoggerAConsola();
 
 
