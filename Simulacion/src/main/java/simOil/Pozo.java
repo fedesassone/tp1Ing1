@@ -10,6 +10,7 @@ public class Pozo {
     private double alpha2 = new ParametrosSimulacion().alpha2;
 
     public int id;
+    public double presionInicial;
     public double presionActualBocaDePozo;
     private CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion;
     private Logger logger;
@@ -17,7 +18,8 @@ public class Pozo {
     //FIXME: Acordarse de borrar la parcela al crear el pozo
     public Pozo(int id, double presionActualBocaDePozo, CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion, Logger logger) {
         this.id = id;
-        this.presionActualBocaDePozo = presionActualBocaDePozo; //presion inicial : [3000, 3500]
+        this.presionInicial = presionActualBocaDePozo;
+        this.presionActualBocaDePozo = presionActualBocaDePozo;
         this.calculadorPresionPorReinyeccion = calculadorPresionPorReinyeccion;
         this.logger = logger;
     }
@@ -43,13 +45,13 @@ public class Pozo {
                                                 double volumenReinyectado) {
         assert(volumenAntesReinyeccion + volumenReinyectado <= volumenInicial);
         this.presionActualBocaDePozo = calculadorPresionPorReinyeccion.nuevaPresionAnteReinyeccion(
-                volumenAntesReinyeccion, volumenReinyectado, volumenInicial, this.presionActualBocaDePozo);
+                volumenAntesReinyeccion, volumenReinyectado, volumenInicial, this.presionInicial);
     }
 
     //Formula 2 del enunciado
     private void actualizarPresionBocaDePozo(double volumenInicial, double volumenActual, int pozosHabilitados) {
         double beta_i = (0.1 * (volumenInicial/volumenActual) ) /
                 Math.pow(pozosHabilitados, 4/3);
-        this.presionActualBocaDePozo = presionActualBocaDePozo * Math.pow(Math.E,beta_i);
+        this.presionActualBocaDePozo = presionActualBocaDePozo * Math.pow(Math.E,-beta_i);
     }
 }

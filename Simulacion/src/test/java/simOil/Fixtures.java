@@ -52,8 +52,8 @@ public class Fixtures {
         int numeroTanquesAgua = 1;
         List<Pozo> pozosCompletados = new LinkedList<Pozo>();
         pozosCompletados.add(new Pozo(1, 150, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        pozosCompletados.add(new Pozo(2, 75, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(2, 100, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(3, 100, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         ReguladorTanque reguladorTanqueGas = reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);

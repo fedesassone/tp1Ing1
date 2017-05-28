@@ -35,7 +35,7 @@ class PozoTest {
 
         double beta_i = (0.1 * (volumenInicial/(volumenAntesExtraccion - volumenAExtraer)) ) /
                 Math.pow(pozosHabilitados, 4/3);
-        double presionEsperada = presionInicialPozo * Math.pow(Math.E,beta_i);
+        double presionEsperada = presionInicialPozo * Math.pow(Math.E, -beta_i);
         assert(pozo.presionActualBocaDePozo == presionEsperada);
     }
 

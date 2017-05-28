@@ -50,5 +50,8 @@ public class ReguladorPozo implements Regulador {
         return capacidadTotal;
     }
 
-    public void avanzarDiaExcavacion() {}
+    //FIXME: Es necesaria? La excavacion no es por dia, depende de los RIGs que se tiene
+    public void avanzarDiaExcavacion() {
+        //TODO: Completar
+    }
 }

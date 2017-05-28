@@ -39,41 +39,52 @@ public class PoliticaReinyectarPorPresionCritica implements PoliticaReinyeccion 
         double presionMinimaDePozos = Double.MAX_VALUE;
         for(Pozo pozo : unSimulador.reguladorPozo.damePozosCompletados()){
             if(pozo.presionActualBocaDePozo < presionMinimaDePozos){
-                presionMinimaDePozos = pozo.presionActualBocaDePozo;
+                presionMinimaDePozos = pozo.presionInicial;
             }
         }
 
         //Vemos cuanto material se debe actualizarPresionPozosPorReinyeccion
-        double volumenNecesarioReinyectarParcial = calculadorPresionPorReinyeccion.volumenAReinyectarDadaPresionDeseada(
+        double volumenNecesarioReinyectar = calculadorPresionPorReinyeccion.volumenAReinyectarDadaPresionDeseada(
                 presionMinimaDePozos, presionCritica,
                 unSimulador.reservorio.volumenInicial(), unSimulador.reservorio.volumenActual());
 
-        //Vemos cuanto reinyectamos de agua sin comprar
-        double volumenAReinyectarAguaDeTanques = Math.min(volumenAguaAlmacenado, volumenNecesarioReinyectarParcial);
-        volumenNecesarioReinyectarParcial -= volumenAReinyectarAguaDeTanques;
+        //No se reinyecta demasiado como para hacer valer que vol_globalReinyectado >= vol_globalExtraido
+        double volumenAReinyectarParcial = Math.min(
+                unSimulador.reservorio.volumenInicial() - unSimulador.reservorio.volumenActual(),
+                volumenNecesarioReinyectar);
 
-        //Vemos cuanto reinyectamos de gas
-        double volumenAReinyectarGas = Math.min(volumenGasAlmacenado, volumenNecesarioReinyectarParcial);
-        volumenNecesarioReinyectarParcial -= volumenAReinyectarAguaDeTanques;
+        if(volumenAReinyectarParcial > 0){
+            //Vemos cuanto reinyectamos de agua sin comprar
+            double volumenAReinyectarAguaDeTanques = Math.min(volumenAguaAlmacenado, volumenAReinyectarParcial);
+            volumenAReinyectarParcial -= volumenAReinyectarAguaDeTanques;
 
-        //Vemos cuanta agua se necesita comprar
-        double volumenAComprarAgua = volumenNecesarioReinyectarParcial;
+            //Vemos cuanto reinyectamos de gas
+            double volumenAReinyectarGas = Math.min(volumenGasAlmacenado, volumenAReinyectarParcial);
+            volumenAReinyectarParcial -= volumenAReinyectarGas;
 
-        //Se hace la compra y extraccion de agua y gas de los tanques
-        double volumenTotalAReinyectar = volumenAReinyectarAguaDeTanques + volumenAReinyectarGas + volumenAComprarAgua;
+            //Vemos cuanta agua se necesita comprar
+            double volumenAComprarAgua = volumenAReinyectarParcial;
 
-        unSimulador.comprarAgua(volumenAComprarAgua);
-        unSimulador.reguladorTanqueAgua.extraer(volumenAReinyectarAguaDeTanques);
-        unSimulador.reguladorTanqueGas.extraer(volumenAReinyectarGas);
-        unSimulador.reguladorPozo.actualizarPresionPozosPorReinyeccion(unSimulador.reservorio.volumenInicial(),
-                unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar);
-        unSimulador.parcelasExcavacionEmpezada.forEach(
-                parcela -> parcela.actualizarPresionPorReinyeccion(unSimulador.reservorio.volumenInicial(),
-                        unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar));
-        unSimulador.parcelasNoExcavadas.forEach(
-                parcela -> parcela.actualizarPresionPorReinyeccion(unSimulador.reservorio.volumenInicial(),
-                        unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar));
-        unSimulador.reservorio.reinyectar(volumenAReinyectarAguaDeTanques + volumenAComprarAgua,
-                volumenAReinyectarGas);
+            double volumenTotalAReinyectar = volumenAReinyectarAguaDeTanques + volumenAReinyectarGas + volumenAComprarAgua;
+
+            //Se hace la compra y extraccion de agua y gas de los tanques
+            unSimulador.comprarAgua(volumenAComprarAgua);
+            unSimulador.reguladorTanqueAgua.extraer(volumenAReinyectarAguaDeTanques);
+            unSimulador.reguladorTanqueGas.extraer(volumenAReinyectarGas);
+
+            //Se actualiza la presion de los pozos y parcelas
+            unSimulador.reguladorPozo.actualizarPresionPozosPorReinyeccion(unSimulador.reservorio.volumenInicial(),
+                    unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar);
+            unSimulador.parcelasExcavacionEmpezada.forEach(
+                    parcela -> parcela.actualizarPresionPorReinyeccion(unSimulador.reservorio.volumenInicial(),
+                            unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar));
+            unSimulador.parcelasNoExcavadas.forEach(
+                    parcela -> parcela.actualizarPresionPorReinyeccion(unSimulador.reservorio.volumenInicial(),
+                            unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar));
+
+            //Se actualiza el volumen del reservorio
+            unSimulador.reservorio.reinyectar(volumenAReinyectarAguaDeTanques + volumenAComprarAgua,
+                    volumenAReinyectarGas);
+        }
     }
 }

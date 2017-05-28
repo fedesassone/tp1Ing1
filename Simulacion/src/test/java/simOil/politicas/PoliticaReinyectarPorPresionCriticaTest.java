@@ -2,6 +2,7 @@ package simOil.politicas;
 
 import org.junit.jupiter.api.Test;
 import simOil.*;
+import simOil.calculadores.CalculadorPresionPorReinyeccion;
 import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
 import simOil.logger.LoggerAConsola;
 import simOil.reguladores.ReguladorPlantaSeparadora;
@@ -14,25 +15,41 @@ import java.util.List;
 class PoliticaReinyectarPorPresionCriticaTest {
 
     @Test
-    public void testHayQueReinyectar(){
+    public void testPoliticaReinyeccion(){
         //Setup de politica, pozos, plantas y tanques
-        int numeroPlantas = 2;
-        int numeroTanquesGas = 1;
-        int numeroTanquesAgua = 1;
-        List<Pozo> pozosCompletados = new LinkedList<Pozo>();
-        pozosCompletados.add(new Pozo(1, 150, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        pozosCompletados.add(new Pozo(2, 75, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
-        ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
-        ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
-        ReguladorTanque reguladorTanqueAgua = new Fixtures().reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
-        Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000);
-        LoggerAConsola logger = new LoggerAConsola();
-        Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
-                reguladorPlantaSeparadora, reservorio, logger);
+        Simulador simulador = new Fixtures().simuladorParaTesting();
+        double volumenInicial = simulador.reservorio.volumenInicial();
+        simulador.reguladorTanqueGas.almacenar(10);
+        simulador.reguladorTanqueAgua.almacenar(15);
+        simulador.reservorio.extraer(30);
+        simulador.reguladorPozo.damePozosCompletados().get(0).extraer(30, volumenInicial, volumenInicial, 3);
+        simulador.reservorio.extraer(14);
+        simulador.reguladorPozo.damePozosCompletados().get(1).extraer(14, volumenInicial, volumenInicial - 30, 3);
+        simulador.reservorio.extraer(14);
+        simulador.reguladorPozo.damePozosCompletados().get(2).extraer(14, volumenInicial, volumenInicial - 44, 3);
 
-        PoliticaReinyeccion politicaReinyeccion = new PoliticaReinyectarPorPresionCritica(100, new CalculadorPresionPorReinyeccionImpl());
-        //FIXME: Completar test
+        //Testeo que es necesario realizar una reinyeccion
+        PoliticaReinyeccion politicaReinyeccion = new PoliticaReinyectarPorPresionCritica(98, new CalculadorPresionPorReinyeccionImpl());
+        assert(politicaReinyeccion.hayQueReinyectar(simulador));
+
+        double volumenAntesReinyeccion = simulador.reservorio.volumenActual();
+        CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion = new CalculadorPresionPorReinyeccionImpl();
+        double volumenReinyectado = calculadorPresionPorReinyeccion.volumenAReinyectarDadaPresionDeseada(
+                simulador.reguladorPozo.damePozosCompletados().get(1).presionInicial,
+                98,
+                simulador.reservorio.volumenInicial(),
+                volumenAntesReinyeccion);
+        politicaReinyeccion.realizarReinyeccion(simulador);
+
+        //Testeo que los valores de las presiones despues de las reinyecciones son correctos
+        Pozo pozo0 = simulador.reguladorPozo.damePozosCompletados().get(0);
+        assert(pozo0.presionActualBocaDePozo == pozo0.presionInicial *
+                (volumenAntesReinyeccion + volumenReinyectado) / simulador.reservorio.volumenInicial());
+        Pozo pozo1 = simulador.reguladorPozo.damePozosCompletados().get(1);
+        assert(pozo1.presionActualBocaDePozo == pozo1.presionInicial *
+                (volumenAntesReinyeccion + volumenReinyectado) / simulador.reservorio.volumenInicial());
+        Pozo pozo2 = simulador.reguladorPozo.damePozosCompletados().get(2);
+        assert(pozo2.presionActualBocaDePozo == pozo2.presionInicial *
+                (volumenAntesReinyeccion + volumenReinyectado) / simulador.reservorio.volumenInicial());
     }
 }

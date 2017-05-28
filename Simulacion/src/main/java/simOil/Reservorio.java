@@ -36,7 +36,7 @@ public class Reservorio {
     //FIXME: Se puede actualizarPresionPorReinyeccion de a mas de a un producto? Segun como estan escritas las formulas parece que no
     public void reinyectar(double unVolumenAReinyectarAgua, double unVolumenAReinyectarGas){
         double volumenTotalReinyectado = unVolumenAReinyectarAgua + unVolumenAReinyectarGas;
-        assert(volumenGlobalReinyectado + volumenTotalReinyectado < volumenGlobalExtraido);
+        assert(volumenGlobalReinyectado + volumenTotalReinyectado <= volumenGlobalExtraido);
 
         proporcionDePetroleo = proporcionElementoAlReinyectar(proporcionDePetroleo, 0, volumenTotalReinyectado);
         proporcionDeGas = proporcionElementoAlReinyectar(proporcionDeGas, unVolumenAReinyectarGas, volumenTotalReinyectado);

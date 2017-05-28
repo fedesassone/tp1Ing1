@@ -4,15 +4,15 @@ public class CalculadorPresionPorReinyeccionImpl implements CalculadorPresionPor
 
     //Formula 3 del enunciado
     public double nuevaPresionAnteReinyeccion(double volumenAntesReinyeccion, double volumenReinyectado,
-                                       double volumenInicial, double presionAntesDeReinyeccion){
+                                              double volumenInicial, double presionInicial){
         double proporcionVolumenSobreInicial = (volumenAntesReinyeccion + volumenReinyectado) / volumenInicial;
-        return presionAntesDeReinyeccion * proporcionVolumenSobreInicial;
+        return presionInicial * proporcionVolumenSobreInicial;
     }
 
     //Derivado de la formula 3 del enunciado
-    public double volumenAReinyectarDadaPresionDeseada(double presionPozo, double presionDeseada,
-                                                double volumenInicial, double volumenActual){
-        return Math.max((presionDeseada / presionPozo) * volumenInicial - volumenActual, 0);
+    public double volumenAReinyectarDadaPresionDeseada(double presionActual, double presionDeseada,
+                                                       double volumenInicial, double volumenActual){
+        return Math.max((presionDeseada / presionActual) * volumenInicial - volumenActual, 0);
     }
 
 }
