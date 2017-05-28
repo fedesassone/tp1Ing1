@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import simOil.TipoDeProducto;
 import simOil.ParametrosSimulacion;
 import simOil.Tanque;
+import simOil.logger.LoggerAConsola;
 
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +15,7 @@ class ReguladorTanqueTest {
     public void testConstruccionTanques() {
         ParametrosSimulacion param = new ParametrosSimulacion();
 
-        ReguladorTanque reguladorTanques = new ReguladorTanque(TipoDeProducto.GAS);
+        ReguladorTanque reguladorTanques = new ReguladorTanque(TipoDeProducto.GAS, new LoggerAConsola());
         reguladorTanques.comprarTanque();
         reguladorTanques.comprarTanque();
 
@@ -48,7 +49,7 @@ class ReguladorTanqueTest {
     @Test
     public void testAlmacenamientoYExtraccion(){
         ParametrosSimulacion param = new ParametrosSimulacion();
-        ReguladorTanque reguladorTanques = new ReguladorTanque(TipoDeProducto.GAS);
+        ReguladorTanque reguladorTanques = new ReguladorTanque(TipoDeProducto.GAS, new LoggerAConsola());
 
         //Construimos 2 tanques
         reguladorTanques.comprarTanque();

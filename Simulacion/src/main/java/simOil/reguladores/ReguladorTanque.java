@@ -19,11 +19,13 @@ public class ReguladorTanque implements Regulador {
     private List<Tanque> tanquesCompletados;
     private List<TanqueEnConstruccion> tanquesEnConstruccion;
     private TipoDeProducto tipoDeProducto;
+    private Logger logger;
 
-    public ReguladorTanque(TipoDeProducto tipoDeProducto) {
+    public ReguladorTanque(TipoDeProducto tipoDeProducto, Logger logger) {
         this.tanquesCompletados = new LinkedList<Tanque>();
         this.tanquesEnConstruccion = new LinkedList<TanqueEnConstruccion>();
         this.tipoDeProducto = tipoDeProducto;
+        this.logger = logger;
     }
 
     public List<Tanque> dameTanquesCompletados(){
@@ -105,7 +107,7 @@ public class ReguladorTanque implements Regulador {
             if(tanqueEnConstruccion.construccionTerminada()){
                 //El numeroTanque de los tanques se genera secuencialmente a partir de 0
                 int numeroNuevoTanque = tanquesCompletados.size();
-                Tanque nuevoTanque = new Tanque(numeroNuevoTanque, capacidadNuevosTanques, tipoDeProducto, new LoggerAConsola());
+                Tanque nuevoTanque = new Tanque(numeroNuevoTanque, capacidadNuevosTanques, tipoDeProducto, logger);
                 tanquesEnConstruccionIterator.remove();
                 tanquesCompletados.add(nuevoTanque);
             }

@@ -26,6 +26,9 @@ public class PoliticaComprarPlantasADemanda implements PoliticaCompraDePlantas {
 
         while(capacidadDeExtraccionTotal>capacacidadAFuturo){
             PlantaSeparadoraEnConstruccion nuevaPlanta = elReguladorDePlantas.comprarPlantaSeparadora();
+            //FIXME: Esta bien que se loggue esto aca? No deberia loggearlo el regulador por como manejamos el logger por ahora?
+            //       De donde se obtiene el precio de lo que se compro?
+            //       A quien se avisa que algo se compro para registrar esto?
             logger.loguear("Se compro la planta separadora que va a estar listo en "+nuevaPlanta.diasRestantes+" días");
             capacacidadAFuturo = elReguladorDePlantas.futuraCapacidadDeSeparacionTotal();
         }

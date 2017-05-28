@@ -3,6 +3,7 @@ package simOil.reguladores;
 import org.junit.jupiter.api.Test;
 import simOil.ParametrosSimulacion;
 import simOil.PlantaSeparadora;
+import simOil.logger.LoggerAConsola;
 
 import java.util.Iterator;
 
@@ -12,7 +13,7 @@ public class ReguladorPlantaSeparadoraTest {
     public void testConstruccionPlantasSeparadoras() {
         ParametrosSimulacion param = new ParametrosSimulacion();
 
-        ReguladorPlantaSeparadora reguladorPlantas = new ReguladorPlantaSeparadora();
+        ReguladorPlantaSeparadora reguladorPlantas = new ReguladorPlantaSeparadora(new LoggerAConsola());
         reguladorPlantas.comprarPlantaSeparadora();
         reguladorPlantas.comprarPlantaSeparadora();
 

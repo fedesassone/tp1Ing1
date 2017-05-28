@@ -19,10 +19,12 @@ public class ReguladorPlantaSeparadora implements Regulador {
 
     private List<PlantaSeparadora> plantasSeparadorasCompletadas;
     private List<PlantaSeparadoraEnConstruccion> plantasSeparadorasEnConstruccion;
+    private Logger logger;
 
-    public ReguladorPlantaSeparadora() {
+    public ReguladorPlantaSeparadora(Logger logger) {
         this.plantasSeparadorasCompletadas = new LinkedList<PlantaSeparadora>();
         this.plantasSeparadorasEnConstruccion = new LinkedList<PlantaSeparadoraEnConstruccion>();
+        this.logger = logger;
     }
 
     public int numeroDePlantasEnConstruccion(){
@@ -79,7 +81,7 @@ public class ReguladorPlantaSeparadora implements Regulador {
             if(plantaEnConstruccion.construccionTerminada()){
                 //El numeroTanque de las plantas se genera secuencialmente a partir de 0
                 int numeroNuevaPlanta = plantasSeparadorasCompletadas.size();
-                PlantaSeparadora nuevaPlanta = new PlantaSeparadora(numeroNuevaPlanta, capacidadNuevasPlantas, new LoggerAConsola());
+                PlantaSeparadora nuevaPlanta = new PlantaSeparadora(numeroNuevaPlanta, capacidadNuevasPlantas, logger);
                 plantasEnConstruccionIterator.remove();
                 plantasSeparadorasCompletadas.add(nuevaPlanta);
             }

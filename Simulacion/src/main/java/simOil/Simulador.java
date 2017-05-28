@@ -40,10 +40,10 @@ public class Simulador {
 
     //Constructor con simOil.politicas y simOil.simOil.reguladores por defecto
     public Simulador(Reservorio reservorio, Logger logger){
-        this(  new ReguladorTanque(TipoDeProducto.AGUA),
-                new ReguladorTanque(TipoDeProducto.GAS),
+        this(  new ReguladorTanque(TipoDeProducto.AGUA, logger),
+                new ReguladorTanque(TipoDeProducto.GAS, logger),
                 new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()),
-                new ReguladorPlantaSeparadora(),
+                new ReguladorPlantaSeparadora(logger),
                 reservorio,logger);
     }
 
