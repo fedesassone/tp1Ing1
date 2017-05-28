@@ -20,8 +20,8 @@ class PoliticaTenerUnRigParaCadaPozoTest {
         int numeroTanquesAgua = 1;
 
         List<PozoEnExcavacion> pozosEnExcavacion = new LinkedList<PozoEnExcavacion>();
-        pozosEnExcavacion.add(new PozoEnExcavacion(200));
-        pozosEnExcavacion.add(new PozoEnExcavacion(300));
+        //pozosEnExcavacion.add(new PozoEnExcavacion(200));
+        //pozosEnExcavacion.add(new PozoEnExcavacion(300));
 
         ReguladorPozo reguladorPozo = new ReguladorPozo(new LinkedList<Pozo>(), pozosEnExcavacion);
 

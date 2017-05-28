@@ -1,9 +1,6 @@
 package simOil.politicas;
 
-import simOil.Pozo;
-import simOil.PozoEnExcavacion;
-import simOil.RIG;
-import simOil.Simulador;
+import simOil.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,9 +16,12 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
 
         int n = Math.min(pozosEnExcav.size(), rigsDisponibles.size());
         int i = 0;
+        //unSimulador.parcelasNoExcavadas
         while (i<n){
             int indicePozoAExcavar = proximoPozo(pozosEnExcav);
+            //int indiceParcelaAExcavar = parcelaMinima(unSimulador.parcelasExcavacionEmpezada);
             assert(indicePozoAExcavar!=-1);//esto no deberia pasar nunca
+
             PozoEnExcavacion pozoAExcavar = pozosEnExcav.get(indicePozoAExcavar);
             pozosEnExcav.remove(indicePozoAExcavar);
 
@@ -62,6 +62,18 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
             }
             return  listaDePozos.indexOf(pozoMinimo);
         }
+    }
+
+
+    public void parcelaAConstruccion(Simulador simulador){
+        List<Parcela> lista = simulador.parcelasExcavacionEmpezada;
+        List<Parcela> listaFinal = new LinkedList<Parcela>();
+        for (Parcela parcela:lista){
+            //PozoEnExcavacion nuevoPozo = new PozoEnExcavacion();
+            simulador.reguladorPozo.excavarPozo(parcela);
+        }
+
+        simulador.parcelasExcavacionEmpezada = listaFinal;
     }
 
 }
