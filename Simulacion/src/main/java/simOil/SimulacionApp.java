@@ -18,7 +18,6 @@ class SimulacionApp {
             //Avanzar
 
 
-
         Logger logger = new LoggerAConsola();
         Reservorio reservorio = new Reservorio(
                 params.proporcionGas,
@@ -33,8 +32,25 @@ class SimulacionApp {
         PoliticaSeleccionDeParcelas politicaSeleccionDeParcelas = new PoliticaSeleccionDeParcelasSeleccionarLaPrimeraDisponible();
         politicaSeleccionDeParcelas.aplicarPolitica(simulador);
 
-
+        //Politica
 
         //logger.loguear();
+
+        // -> Comienza la simulacion
+        // Dividir en Parcelas . Hecho.
+
+        // while (politicaFinalizacion no se cumple){
+        //
+        // Avanzar el dia para plantas en construccion.
+        //
+        //--> Compramos Rigs en Base a Politica de CompraRigs
+        //
+        //--> se ejecuta sii no llegamos al limite de Pozos
+        // --------Seleccionar Parcelas. Hecho . -> parte de la politica de excavacion
+        //
+        //
+        // Excavamos Pozos.
+        //
+        // }
     }
 }

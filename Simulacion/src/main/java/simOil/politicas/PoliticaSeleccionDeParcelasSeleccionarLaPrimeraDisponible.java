@@ -7,9 +7,6 @@ import simOil.logger.LoggerAConsola;
 
 import java.util.List;
 
-/**
- * Created by federico on 28/05/17.
- */
 public class PoliticaSeleccionDeParcelasSeleccionarLaPrimeraDisponible implements PoliticaSeleccionDeParcelas {
     @Override
     public void aplicarPolitica(Simulador simulador) {
