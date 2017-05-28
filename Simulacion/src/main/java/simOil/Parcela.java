@@ -8,7 +8,6 @@ public class Parcela {
     public double presionActual;
     public int profundidadTotal;
     private CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion;
-
     public Parcela(TipoDeTerreno tipoDeTerreno, double presionInicial, int profundidadTotal, CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion) {
         this.tipoDeTerreno = tipoDeTerreno;
         this.presionInicial = presionInicial;
@@ -23,5 +22,13 @@ public class Parcela {
         this.presionActual = calculadorPresionPorReinyeccion.nuevaPresionAnteReinyeccion(
                 volumenAntesReinyeccion, volumenReinyectado, volumenInicial, this.presionInicial);
 
+    }
+
+    public double presionInicialBocaDePozo(){
+        return this.presionInicial;
+    }
+
+    public CalculadorPresionPorReinyeccion calculadorDePresionPorReinyeccion(){
+        return this.calculadorPresionPorReinyeccion;
     }
 }
