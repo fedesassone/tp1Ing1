@@ -7,9 +7,6 @@ import simOil.Simulador;
 
 import java.util.List;
 
-/**
- * Created by federico on 27/05/17.
- */
 public class PoliticaTenerUnRigParaCadaPozo implements PoliticaCompraDeRIGs {
     public void aplicarPolitica(Simulador simulador) {
 

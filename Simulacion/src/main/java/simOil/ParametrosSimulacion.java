@@ -29,6 +29,8 @@ public final class ParametrosSimulacion {
     public static int diasConstruccionTanques = 10;
 
     //Constantes sobre politicas
+    //Por politica seleccion de parcelas
+    public static int numeroDePozosAConstruir = 10;
     //Por politica extraccion
     public static int numeroMaximaPozosAAbrirPorDia = 10;
     //Por politica reinyeccion

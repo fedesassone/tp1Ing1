@@ -65,15 +65,6 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
     }
 
 
-    public void parcelaAConstruccion(Simulador simulador){
-        List<Parcela> lista = simulador.parcelasExcavacionEmpezada;
-        List<Parcela> listaFinal = new LinkedList<Parcela>();
-        for (Parcela parcela:lista){
-            //PozoEnExcavacion nuevoPozo = new PozoEnExcavacion();
-            simulador.reguladorPozo.excavarPozo(parcela);
-        }
 
-        simulador.parcelasExcavacionEmpezada = listaFinal;
-    }
 
 }
