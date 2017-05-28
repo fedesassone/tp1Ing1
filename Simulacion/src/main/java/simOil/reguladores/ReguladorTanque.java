@@ -1,6 +1,8 @@
 package simOil.reguladores;
 
 import simOil.*;
+import simOil.logger.Logger;
+import simOil.logger.LoggerAConsola;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -103,7 +105,7 @@ public class ReguladorTanque implements Regulador {
             if(tanqueEnConstruccion.construccionTerminada()){
                 //El numeroTanque de los tanques se genera secuencialmente a partir de 0
                 int numeroNuevoTanque = tanquesCompletados.size();
-                Tanque nuevoTanque = new Tanque(numeroNuevoTanque, capacidadNuevosTanques, tipoDeProducto, new Logger());
+                Tanque nuevoTanque = new Tanque(numeroNuevoTanque, capacidadNuevosTanques, tipoDeProducto, new LoggerAConsola());
                 tanquesEnConstruccionIterator.remove();
                 tanquesCompletados.add(nuevoTanque);
             }

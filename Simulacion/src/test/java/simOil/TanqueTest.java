@@ -1,14 +1,12 @@
 package simOil;
 import org.junit.jupiter.api.Test;
-import simOil.Logger;
-import simOil.Tanque;
-import simOil.TipoDeProducto;
+import simOil.logger.LoggerAConsola;
 
 public class TanqueTest {
 
     @Test
     public void testAlmacenamiento(){
-        Tanque tanque = new Tanque(2, 1000, TipoDeProducto.AGUA, new Logger());
+        Tanque tanque = new Tanque(2, 1000, TipoDeProducto.AGUA, new LoggerAConsola());
 
         //Utilizamos parte del tanque para almacenamiento
         tanque.almacenar(400);

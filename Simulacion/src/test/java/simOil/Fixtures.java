@@ -1,11 +1,10 @@
 package simOil;
 
-import simOil.TipoDeProducto;
 import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
+import simOil.logger.LoggerAConsola;
 import simOil.reguladores.ReguladorPlantaSeparadora;
 import simOil.reguladores.ReguladorPozo;
 import simOil.reguladores.ReguladorTanque;
-import simOil.ParametrosSimulacion;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -52,15 +51,15 @@ public class Fixtures {
         int numeroTanquesGas = 1;
         int numeroTanquesAgua = 1;
         List<Pozo> pozosCompletados = new LinkedList<Pozo>();
-        pozosCompletados.add(new Pozo(1, 150, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(2, 75, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
+        pozosCompletados.add(new Pozo(1, 150, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(2, 75, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         ReguladorTanque reguladorTanqueGas = reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
         ReguladorTanque reguladorTanqueAgua = reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
         Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000);
-        Logger logger = new Logger();
+        LoggerAConsola logger = new LoggerAConsola();
         return new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
     }

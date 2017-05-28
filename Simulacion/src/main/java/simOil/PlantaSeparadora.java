@@ -1,5 +1,7 @@
 package simOil;
 
+import simOil.logger.Logger;
+
 public class PlantaSeparadora {
 
     public int numeroPlanta;

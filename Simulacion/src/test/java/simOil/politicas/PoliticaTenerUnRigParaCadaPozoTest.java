@@ -3,6 +3,7 @@ package simOil.politicas;
 
 import org.junit.jupiter.api.Test;
 import simOil.*;
+import simOil.logger.LoggerAConsola;
 import simOil.reguladores.ReguladorPlantaSeparadora;
 import simOil.reguladores.ReguladorPozo;
 import simOil.reguladores.ReguladorTanque;
@@ -30,7 +31,7 @@ class PoliticaTenerUnRigParaCadaPozoTest {
         ReguladorTanque reguladorTanqueAgua = new Fixtures().reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
 
         Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000);
-        Logger logger = new Logger();
+        LoggerAConsola logger = new LoggerAConsola();
 
 
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,

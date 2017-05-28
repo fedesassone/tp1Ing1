@@ -1,10 +1,8 @@
 package simOil;
 
 import org.junit.jupiter.api.Test;
-import simOil.Logger;
-import simOil.ParametrosSimulacion;
-import simOil.Reservorio;
-import simOil.Simulador;
+import simOil.logger.Logger;
+import simOil.logger.LoggerAConsola;
 
 public class SimuladorTest {
 
@@ -12,7 +10,7 @@ public class SimuladorTest {
     public void testAvanzarDiaConstrucciones(){
         ParametrosSimulacion params = new ParametrosSimulacion();
         Reservorio reservorio = new Reservorio(0.3, 0.2, 0.5, 1000);
-        Logger logger = new Logger();
+        Logger logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reservorio, logger);
 
         //Comenzamos construccion de tanques y plantas separadoras

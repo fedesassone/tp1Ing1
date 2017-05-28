@@ -1,6 +1,6 @@
 package simOil.politicas;
 
-import simOil.Logger;
+import simOil.logger.Logger;
 import simOil.PlantaSeparadoraEnConstruccion;
 import simOil.Simulador;
 import simOil.reguladores.ReguladorPlantaSeparadora;

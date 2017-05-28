@@ -3,6 +3,7 @@ package simOil.politicas;
 import org.junit.jupiter.api.Test;
 import simOil.*;
 import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
+import simOil.logger.LoggerAConsola;
 import simOil.reguladores.ReguladorPlantaSeparadora;
 import simOil.reguladores.ReguladorPozo;
 import simOil.reguladores.ReguladorTanque;
@@ -17,17 +18,17 @@ public class PoliticaDeCompraDeTanquesADemandaTest {
         int numeroTanquesGas = 1;
         int numeroTanquesAgua = 1;
         List<Pozo> pozosCompletados = new LinkedList<Pozo>();
-        pozosCompletados.add(new Pozo(1, 500, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(4, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
+        pozosCompletados.add(new Pozo(1, 500, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(4, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
 
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
         ReguladorTanque reguladorTanqueAgua = new Fixtures().reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
         Reservorio reservorio = new Reservorio(0.8, 0.0, 0.2, 1000);
-        Logger logger = new Logger();
+        LoggerAConsola logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
 
@@ -53,17 +54,17 @@ public class PoliticaDeCompraDeTanquesADemandaTest {
         int numeroTanquesGas = 1;
         int numeroTanquesAgua = 1;
         List<Pozo> pozosCompletados = new LinkedList<Pozo>();
-        pozosCompletados.add(new Pozo(1, 500, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
-        pozosCompletados.add(new Pozo(4, 50, new CalculadorPresionPorReinyeccionImpl(), new Logger()));
+        pozosCompletados.add(new Pozo(1, 500, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
+        pozosCompletados.add(new Pozo(4, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
 
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
         ReguladorTanque reguladorTanqueAgua = new Fixtures().reguladorTanqueCon(numeroTanquesAgua, TipoDeProducto.AGUA);
         Reservorio reservorio = new Reservorio(0.2, 0.3, 0.5, 1000);
-        Logger logger = new Logger();
+        LoggerAConsola logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
 

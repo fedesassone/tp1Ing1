@@ -1,10 +1,8 @@
 package simOil;
 
-import simOil.ParametrosSimulacion;
 import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
 import org.junit.jupiter.api.Test;
-import simOil.Logger;
-import simOil.Pozo;
+import simOil.logger.LoggerAConsola;
 
 class PozoTest {
     @Test
@@ -15,7 +13,7 @@ class PozoTest {
         double presionIncialBocaDelPozo = 0.5;
         double alphaUno = param.alpha1;
         double alphaDos = param.alpha2;
-        Pozo pozo = new Pozo(1, presionIncialBocaDelPozo, new CalculadorPresionPorReinyeccionImpl(), new Logger());
+        Pozo pozo = new Pozo(1, presionIncialBocaDelPozo, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola());
         double volumen = pozo.potencialDeVolumenDiario(pozosHabilitados);
         double resultado = alphaUno*(presionIncialBocaDelPozo) + alphaDos * Math.pow((presionIncialBocaDelPozo),2);
         assert(volumen == resultado);
@@ -29,7 +27,7 @@ class PozoTest {
         double volumenAntesExtraccion = 500;
         double volumenAExtraer = 3;
 
-        Pozo pozo = new Pozo(1, 30, new CalculadorPresionPorReinyeccionImpl(), new Logger());
+        Pozo pozo = new Pozo(1, 30, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola());
         double presionInicialPozo = pozo.presionActualBocaDePozo;
 
         //Extraemos del pozo
@@ -49,7 +47,7 @@ class PozoTest {
         double volumenAntesReinyeccion = 500;
         double volumenAReinyectar = 20;
 
-        Pozo pozo = new Pozo(1, 30, new CalculadorPresionPorReinyeccionImpl(), new Logger());
+        Pozo pozo = new Pozo(1, 30, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola());
         double presionInicialPozo = pozo.presionActualBocaDePozo;
 
         //Extraemos del pozo

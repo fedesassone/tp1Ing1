@@ -1,6 +1,7 @@
 package simOil;
 
 import simOil.calculadores.CalculadorPresionPorReinyeccion;
+import simOil.logger.Logger;
 
 public class Pozo {
 

@@ -1,6 +1,7 @@
 package simOil;
 
 import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
+import simOil.logger.Logger;
 import simOil.politicas.*;
 import simOil.reguladores.ReguladorPlantaSeparadora;
 import simOil.reguladores.ReguladorPozo;
@@ -26,7 +27,7 @@ public class Simulador {
     private PoliticaReinyeccion politicaReinyeccion;
     private PoliticaExtraccion politicaExtraccion;
     private PoliticaFinalizacion politicaFinalizacion;
-    private  Logger logger;
+    private Logger logger;
     //private PoliticaCompraPlantas politicaCompraPlantas;
 
     //Objetos del yacimiento

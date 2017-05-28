@@ -1,9 +1,10 @@
 package simOil.reguladores;
 
-import simOil.Logger;
+import simOil.logger.Logger;
 import simOil.ParametrosSimulacion;
 import simOil.PlantaSeparadora;
 import simOil.PlantaSeparadoraEnConstruccion;
+import simOil.logger.LoggerAConsola;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -78,7 +79,7 @@ public class ReguladorPlantaSeparadora implements Regulador {
             if(plantaEnConstruccion.construccionTerminada()){
                 //El numeroTanque de las plantas se genera secuencialmente a partir de 0
                 int numeroNuevaPlanta = plantasSeparadorasCompletadas.size();
-                PlantaSeparadora nuevaPlanta = new PlantaSeparadora(numeroNuevaPlanta, capacidadNuevasPlantas, new Logger());
+                PlantaSeparadora nuevaPlanta = new PlantaSeparadora(numeroNuevaPlanta, capacidadNuevasPlantas, new LoggerAConsola());
                 plantasEnConstruccionIterator.remove();
                 plantasSeparadorasCompletadas.add(nuevaPlanta);
             }
