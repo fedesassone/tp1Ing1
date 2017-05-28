@@ -22,7 +22,6 @@ public class PoliticaTenerUnRigParaCadaPozo implements PoliticaCompraDeRIGs {
             for (int i = cantidadRigsAlquilados; i<cantidadPozosEnExcavacion;i++){
                 RIG nuevoRig = new RIG(cantidadRigsAlquilados+1,
                         ParametrosSimulacion.RIG_BASICO_PODER_EXCAVACION,
-                        0,
                         10);
                 simulador.rigsAlquilados.add(nuevoRig);
             }
