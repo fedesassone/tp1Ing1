@@ -16,7 +16,6 @@ public class PoliticaSiempreTenerUnRIG implements PoliticaCompraDeRIGs {
             if(!pozosEnExcavacion.isEmpty()){
                 RIG unNuevoRig = new RIG(1,
                         ParametrosSimulacion.RIG_BASICO_PODER_EXCAVACION,
-                        0,
                         10);
                  unSimulador.rigsAlquilados.add(unNuevoRig);
             }
