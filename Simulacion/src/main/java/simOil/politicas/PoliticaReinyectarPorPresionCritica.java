@@ -28,13 +28,13 @@ public class PoliticaReinyectarPorPresionCritica implements PoliticaReinyeccion 
 
     /**
      *  IDEA:
-     *      Se reinyecta primero agua que es lo que solo sirve para aplicarReinyeccion
+     *      Se reinyecta primero agua que es lo que solo sirve para realizarReinyeccion
      *      Si el agua no alcanza se reinyecta gas
      *      Si ninguno de los dos alcanza se compra el agua necesaria
      */
-    public void aplicarReinyeccion(Simulador unSimulador){
-        double volumenAguaAlmacenado = unSimulador.reguladorTanqueAgua.capacidadAlmacenadaTotal();
-        double volumenGasAlmacenado = unSimulador.reguladorTanqueGas.capacidadAlmacenadaTotal();
+    public void realizarReinyeccion(Simulador unSimulador){
+        double volumenAguaAlmacenado = unSimulador.reguladorTanqueAgua.capacidadEnUsoTotal();
+        double volumenGasAlmacenado = unSimulador.reguladorTanqueGas.capacidadEnUsoTotal();
 
         double presionMinimaDePozos = Double.MAX_VALUE;
         for(Pozo pozo : unSimulador.reguladorPozo.damePozosCompletados()){

@@ -86,17 +86,18 @@ public class Simulador {
         this.logger = logger;
     }
 
+    //FIXME: Queda medio raro que devuelva un booleano y que tenga ese nombre la funcion...
     public boolean simularUnNuevoDia(){
         avanzarDiaDeConstrucciones();
         //TODO: simOil.Politica compra de RIGS
         //TODO: simOil.Politica compra de excavacion
         //TODO: simOil.Politica compra de tanques
         //TODO: simOil.Politica compra de plantas
-        //TODO: simOil.Politica venta de gas
+        politicaVentaDeGas.realizarVentaDeGas(this);
         if(politicaReinyeccion.hayQueReinyectar(this)){
-            politicaReinyeccion.aplicarReinyeccion(this);
+            politicaReinyeccion.realizarReinyeccion(this);
         } else {
-            politicaExtraccion.aplicarExtraccion(this);
+            politicaExtraccion.realizarExtracciones(this);
         }
         return politicaFinalizacion.hayQueFinalizarSimulacion(this);
     }
@@ -108,8 +109,16 @@ public class Simulador {
     }
 
     //FIXME: Queda medio raro, se puede diseñar mejor? Con lo corta que es a lo mejor se puede dejar
-    public void comprarAgua(double unVolumen){
-        logger.loguear("Se compro " + unVolumen + "cm3 de agua");
+    public void comprarAgua(double unVolumenAComprar){
+        logger.loguear("Se compro " + unVolumenAComprar + "cm3 de agua");
+    }
+
+    public void venderGas(double unVolumenAVender) {
+        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de gas");
+    }
+
+    public void venderPetroleo(double unVolumenAVender) {
+        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de petroleo");
     }
 
 }

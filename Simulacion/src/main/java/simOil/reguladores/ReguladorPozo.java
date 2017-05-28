@@ -6,9 +6,6 @@ import simOil.PozoEnExcavacion;
 
 import java.util.List;
 
-/**
- * Created by federico on 25/05/17.
- */
 public class ReguladorPozo implements Regulador {
 
     private List<Pozo> pozosCompletados;

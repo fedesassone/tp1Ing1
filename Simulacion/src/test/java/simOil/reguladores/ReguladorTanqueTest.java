@@ -19,19 +19,19 @@ class ReguladorTanqueTest {
         reguladorTanques.comprarTanque();
 
         //Las plantas tardan diasConstruccionPlantas en construirse
-        assert(reguladorTanques.capacidadDeAlmacenamientoTotal() == 0);
+        assert(reguladorTanques.capacidadLibreTotal() == 0);
         reguladorTanques.avanzarDiaConstrucciones();
         reguladorTanques.comprarTanque();
 
         for (int i = 0; i < param.diasConstruccionTanques - 1 ; i++) {
-            assert(reguladorTanques.capacidadDeAlmacenamientoTotal() == 0);
+            assert(reguladorTanques.capacidadLibreTotal() == 0);
             reguladorTanques.avanzarDiaConstrucciones();
         }
 
         //Luego de pasar diasConstruccionPlantas se deben haber creado las plantas
         int numeroTanquesEsperado = 2;
         assert(reguladorTanques.dameTanquesCompletados().size() == numeroTanquesEsperado);
-        assert(reguladorTanques.capacidadDeAlmacenamientoTotal() == numeroTanquesEsperado * param.capacidadNuevasPlantas);
+        assert(reguladorTanques.capacidadLibreTotal() == numeroTanquesEsperado * param.capacidadNuevasPlantas);
 
         //El numeroTanque dado a las plantas debe ser el correcto
         Iterator<Tanque> tanquesIt = reguladorTanques.dameTanquesCompletados().iterator();
@@ -42,7 +42,7 @@ class ReguladorTanqueTest {
         //Al pasar un dia mas se tiene que tener una planta mas
         reguladorTanques.avanzarDiaConstrucciones();
         assert(reguladorTanques.dameTanquesCompletados().size() == numeroTanquesEsperado + 1);
-        assert(reguladorTanques.capacidadDeAlmacenamientoTotal() == (numeroTanquesEsperado + 1) * param.capacidadNuevasPlantas);
+        assert(reguladorTanques.capacidadLibreTotal() == (numeroTanquesEsperado + 1) * param.capacidadNuevasPlantas);
     }
 
     @Test

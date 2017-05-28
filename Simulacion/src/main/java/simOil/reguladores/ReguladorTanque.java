@@ -70,8 +70,7 @@ public class ReguladorTanque implements Regulador {
         return this.tanquesEnConstruccion.size();
     }
 
-    //FIXME: No queda muy claro por el nombre que esto se refiera a la capacidad libre, aclararlo
-    public double capacidadDeAlmacenamientoTotal(){
+    public double capacidadLibreTotal(){
         double capacidadTotal = 0;
         for(Tanque tanque : tanquesCompletados){
             capacidadTotal += tanque.capacidadLibre();
@@ -79,7 +78,7 @@ public class ReguladorTanque implements Regulador {
         return capacidadTotal;
     }
 
-    public double capacidadAlmacenadaTotal(){
+    public double capacidadEnUsoTotal(){
         double capacidadAlmacenadaTotal = 0;
         for(Tanque tanque : tanquesCompletados){
             capacidadAlmacenadaTotal += tanque.espacioUtilizado;
@@ -88,7 +87,7 @@ public class ReguladorTanque implements Regulador {
     }
 
     public double futuraCapacidadAlmacenamientoTotal(){
-        double capacidadTotal = capacidadDeAlmacenamientoTotal();
+        double capacidadTotal = capacidadLibreTotal();
         for(TanqueEnConstruccion tanque : tanquesEnConstruccion){
             capacidadTotal += tanque.capacidad();
         }

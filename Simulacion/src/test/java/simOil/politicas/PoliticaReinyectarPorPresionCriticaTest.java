@@ -32,5 +32,6 @@ class PoliticaReinyectarPorPresionCriticaTest {
                 reguladorPlantaSeparadora, reservorio, logger);
 
         PoliticaReinyeccion politicaReinyeccion = new PoliticaReinyectarPorPresionCritica(100, new CalculadorPresionPorReinyeccionImpl());
+        //FIXME: Completar test
     }
 }

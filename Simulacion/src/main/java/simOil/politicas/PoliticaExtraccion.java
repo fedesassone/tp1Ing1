@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public abstract class PoliticaExtraccion implements Politica {
 
-    public void aplicarExtraccion(Simulador unSimulador){
+    public void realizarExtracciones(Simulador unSimulador){
         //Obtenemos los parametros necesarios para la aplicacion
         List<Pozo> pozosSinExtraccionDiaria = new LinkedList<Pozo>(unSimulador.reguladorPozo.damePozosCompletados());
 
@@ -46,6 +46,9 @@ public abstract class PoliticaExtraccion implements Politica {
         unSimulador.reguladorTanqueAgua.almacenar(volumenTotalExtraido * unSimulador.reservorio.proporcionDeAgua);
         unSimulador.reguladorTanqueGas.almacenar(volumenTotalExtraido * unSimulador.reservorio.proporcionDeGas);
 
+        //Se vende el petroleo separado
+        unSimulador.venderPetroleo(volumenTotalExtraido * unSimulador.reservorio.proporcionDePetroleo);
+
     }
 
     abstract int numeroPozosAHabilitar(Simulador unSimulador);
@@ -56,8 +59,8 @@ public abstract class PoliticaExtraccion implements Politica {
 
     private double capacidadExtraccionMaxima(Simulador simulador){
         double capacidadSeparacionTotal = simulador.reguladorPlantaSeparadora.capacidadDeSeparacionTotal();
-        double capacidadAlmacenamientoGasTotal = simulador.reguladorTanqueGas.capacidadDeAlmacenamientoTotal();
-        double capacidadAlmacenamientoAguaTotal = simulador.reguladorTanqueAgua.capacidadDeAlmacenamientoTotal();
+        double capacidadAlmacenamientoGasTotal = simulador.reguladorTanqueGas.capacidadLibreTotal();
+        double capacidadAlmacenamientoAguaTotal = simulador.reguladorTanqueAgua.capacidadLibreTotal();
 
         double extraccionMaximaPorTanquesGas = capacidadAlmacenamientoGasTotal / simulador.reservorio.proporcionDeGas;
         double extraccionMaximaPorTanquesAgua = capacidadAlmacenamientoAguaTotal / simulador.reservorio.proporcionDeAgua;
