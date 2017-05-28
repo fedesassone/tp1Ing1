@@ -40,7 +40,7 @@ public class ReguladorPozo implements Regulador {
 
     public void excavarPozo(Parcela parcela) {
         int profundidad = parcela.profundidadTotal;
-        PozoEnExcavacion pozoEnExcavacion = new PozoEnExcavacion(profundidad);
+        PozoEnExcavacion pozoEnExcavacion = new PozoEnExcavacion(profundidad, parcela);
         pozosEnExcavacion.add(pozoEnExcavacion);
     }
 

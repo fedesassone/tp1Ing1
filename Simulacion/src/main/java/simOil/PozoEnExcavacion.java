@@ -3,8 +3,9 @@ package simOil;
 public class PozoEnExcavacion {
     Parcela parcela;
     int profundidadRestante;
-    public PozoEnExcavacion(int profundidadRestante) {
+    public PozoEnExcavacion(int profundidadRestante, Parcela parcela) {
         this.profundidadRestante = profundidadRestante;
+        this.parcela = parcela;
     }
 
     public void excavar(int profundidad) {
