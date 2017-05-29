@@ -17,7 +17,7 @@ public abstract class PoliticaExtraccion implements Politica {
         int numeroPozosAHabilitar = numeroPozosAHabilitar(unSimulador);
 
         double volumenTotalExtraido = 0;
-        while(true){
+        while(capacidadExtraccionMaxima > 0){
             Optional<Pozo> pozoSiguienteOpt = siguiente(pozosSinExtraccionDiaria, unSimulador);
             if(!pozoSiguienteOpt.isPresent()){
                 break;
@@ -38,19 +38,20 @@ public abstract class PoliticaExtraccion implements Politica {
                     unSimulador.reservorio.volumenActual(), numeroPozosAHabilitar);
             unSimulador.reservorio.extraer(volumenAExtraer);
 
-
-
         }
 
-        //Se separa lo extraido
-        unSimulador.reguladorPlantaSeparadora.separar(volumenTotalExtraido);
+        //Solo se realiza separacion si es que se extrajo algo de los pozos
+        if(volumenTotalExtraido > 0){
+            //Se separa lo extraido
+            unSimulador.reguladorPlantaSeparadora.separar(volumenTotalExtraido);
 
-        //Se almacena el gas y agua separados
-        unSimulador.reguladorTanqueAgua.almacenar(volumenTotalExtraido * unSimulador.reservorio.proporcionDeAgua);
-        unSimulador.reguladorTanqueGas.almacenar(volumenTotalExtraido * unSimulador.reservorio.proporcionDeGas);
+            //Se almacena el gas y agua separados
+            unSimulador.reguladorTanqueAgua.almacenar(volumenTotalExtraido * unSimulador.reservorio.proporcionDeAgua);
+            unSimulador.reguladorTanqueGas.almacenar(volumenTotalExtraido * unSimulador.reservorio.proporcionDeGas);
 
-        //Se vende el petroleo separado
-        unSimulador.venderPetroleo(volumenTotalExtraido * unSimulador.reservorio.proporcionDePetroleo);
+            //Se vende el petroleo separado
+            unSimulador.venderPetroleo(volumenTotalExtraido * unSimulador.reservorio.proporcionDePetroleo);
+        }
 
     }
 

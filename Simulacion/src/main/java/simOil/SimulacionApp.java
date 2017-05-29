@@ -22,8 +22,8 @@ class SimulacionApp {
         Logger logger = new LoggerAConsola();
         Reservorio reservorio = new Reservorio(
                 params.proporcionGas,
-                params.proporcionAgua,
                 params.proporcionPetroleo,
+                params.proporcionAgua,
                 params.volumenInicial,
                 logger,
                 params.areaReservorio);

@@ -34,7 +34,7 @@ public final class ParametrosSimulacion {
     //Por politica extraccion
     public static int numeroMaximaPozosAAbrirPorDia = 10;
     //Por politica reinyeccion
-    public static double presionCriticaPozos = 10;
+    public static double presionCriticaPozos = 40;
     //Por politica finalizacion
     public static double dilucionCriticaPetroleo = 0.35; //Valor tipico: 0.35
     //Por politica venta gas

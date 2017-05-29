@@ -115,6 +115,8 @@ public class Simulador {
         avanzarDiaDeConstrucciones();
         politicaCompraDeRIGs.aplicarPolitica(this);
         politicaExcavacion.aplicarPolitica(this);
+        politicaCompraDePlantas.aplicarPolitica(this);
+        politicaCompraDeTanques.aplicarPolitica(this);
         politicaVentaDeGas.realizarVentaDeGas(this);
         if(politicaReinyeccion.hayQueReinyectar(this)){
             politicaReinyeccion.realizarReinyeccion(this);
