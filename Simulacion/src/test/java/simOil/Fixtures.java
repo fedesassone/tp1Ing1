@@ -64,4 +64,12 @@ public class Fixtures {
                 reguladorPlantaSeparadora, reservorio, logger);
     }
 
+    public Parcela parcelaParaTesting(){
+        return new Parcela(TipoDeTerreno.TERRENO_TIERRA, 200, 100, new CalculadorPresionPorReinyeccionImpl());
+    }
+
+    public RIG rigParaTesting(){
+        return new RIG(0, 200, 20);
+    }
+
 }

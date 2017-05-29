@@ -16,16 +16,12 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
         List<PozoEnExcavacion> pozosLuegoDeExcavar = new LinkedList<PozoEnExcavacion>();
 
         List<RIG> rigsDisponibles = unSimulador.rigsAlquilados;
-        List<RIG> rigsDisponiblesCopia = rigsDisponibles;
+        List<RIG> rigsDisponiblesCopia = new LinkedList<RIG>(rigsDisponibles);
 
         int n = Math.min(pozosEnExcav.size(), rigsDisponibles.size());
         int i = 0;
-
-        //parcelaAConstruccion(unSimulador);
-        //unSimulador.parcelasNoExcavadas
         while (i<n){
             int indicePozoAExcavar = proximoPozo(pozosEnExcav);
-            //int indiceParcelaAExcavar = parcelaMinima(unSimulador.parcelasExcavacionEmpezada);
             assert(indicePozoAExcavar!=-1);//esto no deberia pasar nunca
 
             PozoEnExcavacion pozoAExcavar = pozosEnExcav.get(indicePozoAExcavar);

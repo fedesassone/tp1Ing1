@@ -21,9 +21,8 @@ class PoliticaTenerUnRigParaCadaPozoTest {
         int numeroTanquesAgua = 1;
 
         List<PozoEnExcavacion> pozosEnExcavacion = new LinkedList<PozoEnExcavacion>();
-        Parcela mockParcela = new Parcela(TipoDeTerreno.TERRENO_TIERRA, 200, 100, new CalculadorPresionPorReinyeccionImpl());
-        pozosEnExcavacion.add(new PozoEnExcavacion(200, mockParcela));
-        pozosEnExcavacion.add(new PozoEnExcavacion(300, mockParcela));
+        pozosEnExcavacion.add(new PozoEnExcavacion(200, new Fixtures().parcelaParaTesting()));
+        pozosEnExcavacion.add(new PozoEnExcavacion(300, new Fixtures().parcelaParaTesting()));
 
         ReguladorPozo reguladorPozo = new ReguladorPozo(new LinkedList<Pozo>(), pozosEnExcavacion);
 
