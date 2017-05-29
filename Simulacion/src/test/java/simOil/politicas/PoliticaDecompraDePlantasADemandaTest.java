@@ -23,7 +23,7 @@ public class PoliticaDecompraDePlantasADemandaTest {
 
 
         pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
+        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>(), new LoggerAConsola());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         int cantidadInicial = reguladorPlantaSeparadora.numeroDePlantasEnConstruccion();
         double b = reguladorPozo.capacidadDeExtraccionTotal(3);
@@ -58,7 +58,7 @@ public class PoliticaDecompraDePlantasADemandaTest {
 
 
         pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
+        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>(), new LoggerAConsola());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
         int cantidadInicial = reguladorPlantaSeparadora.numeroDePlantasEnConstruccion();
         double b = reguladorPozo.capacidadDeExtraccionTotal(1);

@@ -15,15 +15,17 @@ public class ReguladorPozo implements Regulador {
     Logger logger;
 
     //FIXME: Se pueden pasarle pozos ya completados al regulador?
-    public ReguladorPozo(List<Pozo> pozosCompletados, List<PozoEnExcavacion> pozosEnExcavacion) {
+    public ReguladorPozo(List<Pozo> pozosCompletados, List<PozoEnExcavacion> pozosEnExcavacion, Logger logger) {
         this.pozosCompletados = pozosCompletados;
         this.pozosEnExcavacion = pozosEnExcavacion;
+        this.logger = logger;
     }
 
-    public ReguladorPozo(){
+    public ReguladorPozo(Logger logger){
         this.ultimoPozoAgregado = 0;
         this.pozosCompletados = new LinkedList<Pozo>();
         this.pozosEnExcavacion = new LinkedList<PozoEnExcavacion>();
+        this.logger = logger;
     }
 
     public List<Pozo> damePozosCompletados() {

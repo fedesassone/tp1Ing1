@@ -53,7 +53,7 @@ public class Simulador {
     public Simulador(Reservorio reservorio, Logger logger){
         this(  new ReguladorTanque(TipoDeProducto.AGUA, logger),
                 new ReguladorTanque(TipoDeProducto.GAS, logger),
-                new ReguladorPozo(new LinkedList<Pozo>(), new LinkedList<PozoEnExcavacion>()),
+                new ReguladorPozo(logger),
                 new ReguladorPlantaSeparadora(logger),
                 reservorio,logger);
     }

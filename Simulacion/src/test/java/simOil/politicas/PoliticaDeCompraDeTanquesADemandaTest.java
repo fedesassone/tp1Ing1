@@ -22,7 +22,7 @@ public class PoliticaDeCompraDeTanquesADemandaTest {
         pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         pozosCompletados.add(new Pozo(4, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
+        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>(), new LoggerAConsola());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
 
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);
@@ -58,7 +58,7 @@ public class PoliticaDeCompraDeTanquesADemandaTest {
         pozosCompletados.add(new Pozo(2, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         pozosCompletados.add(new Pozo(3, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
         pozosCompletados.add(new Pozo(4, 50, new CalculadorPresionPorReinyeccionImpl(), new LoggerAConsola()));
-        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>());
+        ReguladorPozo reguladorPozo = new ReguladorPozo(pozosCompletados, new LinkedList<PozoEnExcavacion>(), new LoggerAConsola());
         ReguladorPlantaSeparadora reguladorPlantaSeparadora = new Fixtures().reguladorPlantaCon(numeroPlantas);
 
         ReguladorTanque reguladorTanqueGas = new Fixtures().reguladorTanqueCon(numeroTanquesGas, TipoDeProducto.GAS);

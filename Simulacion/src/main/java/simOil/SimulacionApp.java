@@ -1,6 +1,7 @@
 package simOil;
 
 import simOil.logger.Logger;
+import simOil.logger.LoggerAArchivo;
 import simOil.logger.LoggerAConsola;
 import simOil.politicas.PoliticaSeleccionDeParcelas;
 import simOil.politicas.PoliticaSeleccionDeParcelasMenorProfundidad;
@@ -53,8 +54,9 @@ class SimulacionApp {
         //
         // }
 
-        while(simulador.hayQueFinalizarSimulacion()){
+        while(!simulador.hayQueFinalizarSimulacion()){
             simulador.simularUnNuevoDia();
         }
+        logger.loguear("Se finalizo la simulacion con resultados: FIXME");
     }
 }
