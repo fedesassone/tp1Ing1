@@ -52,5 +52,9 @@ class SimulacionApp {
         // Excavamos Pozos.
         //
         // }
+
+        while(simulador.hayQueFinalizarSimulacion()){
+            simulador.simularUnNuevoDia();
+        }
     }
 }

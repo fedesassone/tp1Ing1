@@ -109,22 +109,25 @@ public class Simulador {
 
     //FIXME: Queda medio raro que devuelva un booleano y que tenga ese nombre la funcion...
     //       A lo mejor dividir esta en simularUnNuevo dia y finalizar ejecucion?
-    public boolean simularUnNuevoDia(){
+    public void simularUnNuevoDia(){
         logger.loguear("Comenzo simulacion del dia numero " + numeroDeDia);
         numeroDeDia ++;
         avanzarDiaDeConstrucciones();
-        //TODO: simOil.Politica compra de RIGS
-        //TODO: simOil.Politica compra de excavacion
+        politicaCompraDeRIGs.aplicarPolitica(this);
+        politicaExcavacion.aplicarPolitica(this);
         politicaVentaDeGas.realizarVentaDeGas(this);
         if(politicaReinyeccion.hayQueReinyectar(this)){
             politicaReinyeccion.realizarReinyeccion(this);
         } else {
             politicaExtraccion.realizarExtracciones(this);
         }
+    }
+
+    public boolean hayQueFinalizarSimulacion(){
         return politicaFinalizacion.hayQueFinalizarSimulacion(this);
     }
 
-    public void avanzarDiaDeConstrucciones(){
+    private void avanzarDiaDeConstrucciones(){
         reguladorPlantaSeparadora.avanzarDiaConstrucciones();
         reguladorTanqueAgua.avanzarDiaConstrucciones();
         reguladorTanqueGas.avanzarDiaConstrucciones();
