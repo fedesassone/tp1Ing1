@@ -8,6 +8,7 @@ import simOil.reguladores.ReguladorPlantaSeparadora;
 import simOil.reguladores.ReguladorPozo;
 import simOil.reguladores.ReguladorTanque;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -110,7 +111,6 @@ public class Simulador {
     public void simularUnNuevoDia(){
         logger.loguear("Comenzo simulacion del dia numero " + numeroDeDia);
         numeroDeDia ++;
-        avanzarDiaDeConstrucciones();
         politicaAlquilerDeRIGs.aplicarPolitica(this);
         politicaExcavacion.aplicarPolitica(this);
         politicaCompraDePlantas.aplicarPolitica(this);
@@ -121,10 +121,23 @@ public class Simulador {
         } else {
             politicaExtraccion.realizarExtracciones(this);
         }
+        avanzarDiaDeAlquileres();
+        avanzarDiaDeConstrucciones();
     }
 
     public boolean hayQueFinalizarSimulacion(){
         return politicaFinalizacion.hayQueFinalizarSimulacion(this);
+    }
+
+    private void avanzarDiaDeAlquileres(){
+        Iterator<RIG> rigsAlquiladosIt = rigsAlquilados.iterator();
+        while(rigsAlquiladosIt.hasNext()){
+            RIG rigAlquilado = rigsAlquiladosIt.next();
+            rigAlquilado.diasRestantesDeUso --;
+            if(rigAlquilado.diasRestantesDeUso == 0){
+                rigsAlquiladosIt.remove();
+            }
+        }
     }
 
     private void avanzarDiaDeConstrucciones(){
@@ -133,7 +146,6 @@ public class Simulador {
         reguladorTanqueGas.avanzarDiaConstrucciones();
     }
 
-    //FIXME: Queda medio raro, se puede diseñar mejor? Con lo corta que es a lo mejor se puede dejar
     public void comprarAgua(double unVolumenAComprar){
         logger.loguear("Se compro " + unVolumenAComprar + "cm3 de agua");
     }

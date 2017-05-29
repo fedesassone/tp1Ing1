@@ -67,8 +67,8 @@ public class PoliticaReinyectarPorPresionCritica implements PoliticaReinyeccion 
         //que reinyectar)
         double presionMinimaDePozos = Double.MAX_VALUE;
         for(Pozo pozo : pozos){
-            if(pozo.presionActualBocaDePozo < presionMinimaDePozos){
-                presionMinimaDePozos = pozo.presionActualBocaDePozo;
+            if(pozo.presionInicial < presionMinimaDePozos){
+                presionMinimaDePozos = pozo.presionInicial;
             }
         }
 

@@ -16,11 +16,12 @@ public class PoliticaSiempreTenerUnRIG implements PoliticaAlquilerDeRIGs {
         List<PozoEnExcavacion> pozosEnExcavacion = unSimulador.reguladorPozo.damePozosEnExcavacion();
         if(unSimulador.rigsAlquilados.isEmpty()){
             if(!pozosEnExcavacion.isEmpty()){
-                log.loguear("Se compró un RIG BASICO por un costo de " + ParametrosSimulacion.RIG_BASICO_COSTO);
-                unSimulador.costoTotal=+ ParametrosSimulacion.RIG_BASICO_COSTO;
+                log.loguear("Se alquilo un RIG BASICO por " + ParametrosSimulacion.numeroDiasAlquilerDeRigs +
+                        " con un costo de " + (ParametrosSimulacion.rigBasicoCostoPorDia * ParametrosSimulacion.rigBasicoCostoPorDia));
+                unSimulador.costoTotal=+ ParametrosSimulacion.rigBasicoCostoPorDia;
                 RIG unNuevoRig = new RIG(1,
-                        ParametrosSimulacion.RIG_BASICO_PODER_EXCAVACION,
-                        10);
+                        ParametrosSimulacion.rigBasicoPoderExcavacion,
+                        ParametrosSimulacion.numeroDiasAlquilerDeRigs);
                  unSimulador.rigsAlquilados.add(unNuevoRig);
             }
         }

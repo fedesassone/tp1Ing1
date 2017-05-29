@@ -41,12 +41,14 @@ public final class ParametrosSimulacion {
     public static double porcentajeVentaDiarioGas = 0.3;
 
     //Parametros Rigs
-    public static int RIG_BASICO_PODER_EXCAVACION = 100;
-    public static int RIG_BASICO_COSTO = 100;
+    public static int minimoDiaAlquilerDeRigs = 5;
+    public static int numeroDiasAlquilerDeRigs = 10;
 
-    //Costos de las cosas
-    public static int RIG_AVANZADO_PODER_EXCAVACION = 200;
-    public static int RIG_AVANZADO_COSTO = 180;
+    //Parametros modelos de rigs
+    public static int rigBasicoPoderExcavacion = 100;
+    public static int rigBasicoCostoPorDia = 10;
+    public static int rigAvanzadoPoderExcavacion = 200;
+    public static int rigAvanzadoCostoPorDia = 18;
 
     public static int PLANTA_SEPARADORA_COSTO = 500;
 

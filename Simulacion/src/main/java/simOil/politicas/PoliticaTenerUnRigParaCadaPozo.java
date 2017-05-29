@@ -18,11 +18,12 @@ public class PoliticaTenerUnRigParaCadaPozo implements PoliticaAlquilerDeRIGs {
         int cantidadPozosEnExcavacion = listaPozosEnExcavacion.size();
         if(cantidadRigsAlquilados<cantidadPozosEnExcavacion){
             for (int i = cantidadRigsAlquilados; i<cantidadPozosEnExcavacion;i++){
-                log.loguear("Se compró un RIG BASICO por un costo de " + ParametrosSimulacion.RIG_BASICO_COSTO);
-                simulador.costoTotal=+ ParametrosSimulacion.RIG_BASICO_COSTO;
+                log.loguear("Se alquilo un RIG BASICO por " + ParametrosSimulacion.numeroDiasAlquilerDeRigs +
+                        " con un costo de " + (ParametrosSimulacion.rigBasicoCostoPorDia * ParametrosSimulacion.rigBasicoCostoPorDia));
+                simulador.costoTotal=+ ParametrosSimulacion.rigBasicoCostoPorDia;
                 RIG nuevoRig = new RIG(cantidadRigsAlquilados+1,
-                        ParametrosSimulacion.RIG_BASICO_PODER_EXCAVACION,
-                        10);
+                        ParametrosSimulacion.rigBasicoPoderExcavacion,
+                        ParametrosSimulacion.numeroDiasAlquilerDeRigs);
                 simulador.rigsAlquilados.add(nuevoRig);
             }
         }
