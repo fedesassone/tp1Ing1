@@ -33,9 +33,10 @@ class PoliticaReinyectarPorPresionCriticaTest {
         assert(politicaReinyeccion.hayQueReinyectar(simulador));
 
         double volumenAntesReinyeccion = simulador.reservorio.volumenActual();
+        double presionPozo0AntesReinyeccion = simulador.reguladorPozo.damePozosCompletados().get(0).presionActualBocaDePozo;
         CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion = new CalculadorPresionPorReinyeccionImpl();
         double volumenReinyectado = calculadorPresionPorReinyeccion.volumenAReinyectarDadaPresionDeseada(
-                simulador.reguladorPozo.damePozosCompletados().get(1).presionInicial,
+                simulador.reguladorPozo.damePozosCompletados().get(1).presionActualBocaDePozo,
                 98,
                 simulador.reservorio.volumenInicial(),
                 volumenAntesReinyeccion);
@@ -43,7 +44,7 @@ class PoliticaReinyectarPorPresionCriticaTest {
 
         //Testeo que los valores de las presiones despues de las reinyecciones son correctos
         Pozo pozo0 = simulador.reguladorPozo.damePozosCompletados().get(0);
-        assert(pozo0.presionActualBocaDePozo == pozo0.presionInicial *
+        assert(pozo0.presionActualBocaDePozo == presionPozo0AntesReinyeccion *
                 (volumenAntesReinyeccion + volumenReinyectado) / simulador.reservorio.volumenInicial());
         Pozo pozo1 = simulador.reguladorPozo.damePozosCompletados().get(1);
         assert(pozo1.presionActualBocaDePozo == pozo1.presionInicial *
