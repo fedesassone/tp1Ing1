@@ -21,7 +21,7 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
         int n = Math.min(pozosEnExcav.size(), rigsDisponibles.size());
         int i = 0;
 
-        parcelaAConstruccion(unSimulador);
+        //parcelaAConstruccion(unSimulador);
         //unSimulador.parcelasNoExcavadas
         while (i<n){
             int indicePozoAExcavar = proximoPozo(pozosEnExcav);
@@ -74,15 +74,6 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
     }
 
 
-    public void parcelaAConstruccion(Simulador simulador){
-        List<Parcela> lista = simulador.parcelasExcavacionEmpezada;
-        List<Parcela> listaFinal = new LinkedList<Parcela>();
-        for (Parcela parcela:lista){
-            //PozoEnExcavacion nuevoPozo = new PozoEnExcavacion();
-            simulador.reguladorPozo.excavarPozo(parcela);
-        }
 
-        simulador.parcelasExcavacionEmpezada = listaFinal;
-    }
 
 }

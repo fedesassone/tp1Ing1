@@ -47,7 +47,6 @@ public class Simulador {
     public int numeroDeDia;
     public Reservorio reservorio;
     public List<Parcela> parcelasNoExcavadas;
-    public List<Parcela> parcelasExcavacionEmpezada;
     public List<RIG> rigsAlquilados;
 
     //Constructor con simOil.politicas y simOil.simOil.reguladores por defecto
@@ -102,7 +101,6 @@ public class Simulador {
         this.numeroDeDia = 0;
         this.reservorio = reservorio;
         this.parcelasNoExcavadas = new LinkedList<Parcela>();
-        this.parcelasExcavacionEmpezada = new LinkedList<Parcela>();
         this.rigsAlquilados = new LinkedList<RIG>();
 
         //Logger

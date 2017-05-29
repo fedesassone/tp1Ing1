@@ -13,10 +13,9 @@ public class PoliticaComprarPlantasADemanda implements PoliticaCompraDePlantas {
 
 
     public void aplicarPolitica(Simulador unSimulador){
-        //TODO: cuerpo del codigo repetido entre este método y aplicarPolitica de simOil.politicas.PoliticaComprarTanquesADemanda
+        //TODO: cuerpo del codigo repetido entre este método y seleccionarParcelasAExcavar de simOil.politicas.PoliticaComprarTanquesADemanda
 
         Logger log = unSimulador.logger;
-
         ReguladorPlantaSeparadora elReguladorDePlantas = unSimulador.reguladorPlantaSeparadora;
         ReguladorPozo elReguladorDePozos = unSimulador.reguladorPozo;
         int pozosCompletados = elReguladorDePozos.cantidadPozosCompletados();

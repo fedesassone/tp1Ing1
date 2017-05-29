@@ -96,9 +96,6 @@ public class PoliticaReinyectarPorPresionCritica implements PoliticaReinyeccion 
         //Se actualiza la presion de los pozos y parcelas
         unSimulador.reguladorPozo.actualizarPresionPozosPorReinyeccion(unSimulador.reservorio.volumenInicial(),
                 unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar);
-        unSimulador.parcelasExcavacionEmpezada.forEach(
-                parcela -> parcela.actualizarPresionPorReinyeccion(unSimulador.reservorio.volumenInicial(),
-                        unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar));
         unSimulador.parcelasNoExcavadas.forEach(
                 parcela -> parcela.actualizarPresionPorReinyeccion(unSimulador.reservorio.volumenInicial(),
                         unSimulador.reservorio.volumenActual(), volumenTotalAReinyectar));

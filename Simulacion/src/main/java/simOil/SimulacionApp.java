@@ -3,7 +3,7 @@ package simOil;
 import simOil.logger.Logger;
 import simOil.logger.LoggerAConsola;
 import simOil.politicas.PoliticaSeleccionDeParcelas;
-import simOil.politicas.PoliticaSeleccionDeParcelasSeleccionarLaPrimeraDisponible;
+import simOil.politicas.PoliticaSeleccionDeParcelasMenorProfundidad;
 
 class SimulacionApp {
     //FIXME: Completar
@@ -29,8 +29,8 @@ class SimulacionApp {
         Simulador simulador = new Simulador(reservorio, logger);
         simulador.generarParcelasIniciales();
 
-        PoliticaSeleccionDeParcelas politicaSeleccionDeParcelas = new PoliticaSeleccionDeParcelasSeleccionarLaPrimeraDisponible();
-        politicaSeleccionDeParcelas.aplicarPolitica(simulador);
+        PoliticaSeleccionDeParcelas politicaSeleccionDeParcelas = new PoliticaSeleccionDeParcelasMenorProfundidad(params.numeroDePozosAConstruir);
+        politicaSeleccionDeParcelas.seleccionarParcelasAExcavar(simulador);
 
         //Politica
 
