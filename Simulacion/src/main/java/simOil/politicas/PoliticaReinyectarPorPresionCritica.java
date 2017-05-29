@@ -103,5 +103,9 @@ public class PoliticaReinyectarPorPresionCritica implements PoliticaReinyeccion 
         //Se actualiza el volumen del reservorio
         unSimulador.reservorio.reinyectar(volumenAReinyectarAguaDeTanques + volumenAComprarAgua,
                 volumenAReinyectarGas);
+
+        //Se actualiza los totales de reinyeccion guardados por el simulador
+        unSimulador.totalGasReinyectada += volumenAReinyectarGas;
+        unSimulador.totalAguaReinyectada += volumenAReinyectarAguaDeTanques + volumenAComprarAgua;
     }
 }

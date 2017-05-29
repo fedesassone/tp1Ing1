@@ -99,30 +99,16 @@ class SimulacionApp {
 
         politicaSeleccionDeParcelas.seleccionarParcelasAExcavar(simulador);
 
-        //Politica
-
-        //logger.loguear();
-
-        // -> Comienza la simulacion
-        // Dividir en Parcelas . Hecho.
-
-        // while (politicaFinalizacion no se cumple){
-        //
-        // Avanzar el dia para plantas en construccion.
-        //
-        //--> Compramos Rigs en Base a Politica de CompraRigs
-        //
-        //--> se ejecuta sii no llegamos al limite de Pozos
-        // --------Seleccionar Parcelas. Hecho . -> parte de la politica de excavacion
-        //
-        //
-        // Excavamos Pozos.
-        //
-        // }
-
         while(!simulador.hayQueFinalizarSimulacion()){
             simulador.simularUnNuevoDia();
         }
-        logger.loguear("Se finalizo la simulacion con resultados: FIXME");
+        logger.loguear("Se finalizo la simulacion con los resultados:\n" +
+                "\tGasto total: " + simulador.costoTotal + "\n" +
+                "\tGanancia total: " + simulador.gananciaTotal + "\n" +
+                "\tReinyeccion de agua: " + simulador.totalAguaReinyectada + "\n" +
+                "\tReinyeccion de gas: " + simulador.totalGasReinyectada + "\n" +
+                "\tVolumen de petroleo total vendido: " + simulador.totalPetroleoVendido + "\n" +
+                "\tVolumen de gas total vendido: " + simulador.totalGasVendido + "\n"
+        );
     }
 }

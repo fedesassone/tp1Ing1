@@ -33,7 +33,7 @@ public class Simulador {
     public Logger logger;
 
     //Llevador de Costos y Beneficios
-    public int costoTotal;
+    public int costoTotal; //FIXME: Se toma en cuenta costo de RIGS (combustible)?
     public int gananciaTotal;
 
     public double totalAguaReinyectada;
@@ -107,8 +107,6 @@ public class Simulador {
         this.logger = logger;
     }
 
-    //FIXME: Queda medio raro que devuelva un booleano y que tenga ese nombre la funcion...
-    //       A lo mejor dividir esta en simularUnNuevo dia y finalizar ejecucion?
     public void simularUnNuevoDia(){
         logger.loguear("Comenzo simulacion del dia numero " + numeroDeDia);
         numeroDeDia ++;
@@ -141,11 +139,17 @@ public class Simulador {
     }
 
     public void venderGas(double unVolumenAVender) {
-        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de gas");
+        double gananciaVenta = unVolumenAVender * new ParametrosSimulacion().gananciaPorCm3VendidoGas;
+        gananciaTotal += gananciaVenta;
+        totalGasVendido += unVolumenAVender;
+        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de gas por " + gananciaVenta);
     }
 
     public void venderPetroleo(double unVolumenAVender) {
-        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de petroleo");
+        double gananciaVenta = unVolumenAVender * new ParametrosSimulacion().gananciaPorCm3VendidoPetroleo;
+        gananciaTotal += gananciaVenta;
+        totalPetroleoVendido += unVolumenAVender;
+        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de petroleo por " + gananciaVenta);
     }
 
     CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion = new CalculadorPresionPorReinyeccionImpl();

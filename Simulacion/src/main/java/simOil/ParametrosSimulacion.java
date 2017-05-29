@@ -44,7 +44,7 @@ public final class ParametrosSimulacion {
     public static int RIG_BASICO_PODER_EXCAVACION = 100;
     public static int RIG_BASICO_COSTO = 100;
 
-    //Costos de las cosas wachin
+    //Costos de las cosas
     public static int RIG_AVANZADO_PODER_EXCAVACION = 200;
     public static int RIG_AVANZADO_COSTO = 180;
 
@@ -52,5 +52,9 @@ public final class ParametrosSimulacion {
 
     public static int TANQUE_AGUA_COSTO = 120;
     public static int TANQUE_GAS_COSTO = 130;
+
+    //Ganancia por ventas
+    public static int gananciaPorCm3VendidoGas = 10;
+    public static int gananciaPorCm3VendidoPetroleo = 10;
 
 }
