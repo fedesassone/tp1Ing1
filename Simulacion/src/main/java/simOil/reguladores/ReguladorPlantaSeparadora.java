@@ -49,8 +49,6 @@ public class ReguladorPlantaSeparadora implements Regulador {
     }
 
     public PlantaSeparadoraEnConstruccion comprarPlantaSeparadora(){
-        //FIXME: Se necesita el logger para loggear la compra de la planta separadora?
-        //FIXME: De donde se obtiene el precio de la planta separadora comprada?
         PlantaSeparadoraEnConstruccion nuevaPlanta = new PlantaSeparadoraEnConstruccion(diasConstruccionPlantas, capacidadNuevasPlantas );
         plantasSeparadorasEnConstruccion.add(nuevaPlanta);
         return nuevaPlanta;

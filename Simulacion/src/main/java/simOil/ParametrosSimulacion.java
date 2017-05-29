@@ -1,8 +1,5 @@
 package simOil;
 
-import java.util.List;
-
-//FIXME: Obtener parametros de un archivo?
 public final class ParametrosSimulacion {
 
     //Constantes sobre el reservorio
@@ -37,6 +34,7 @@ public final class ParametrosSimulacion {
     public static double presionCriticaPozos = 40;
     //Por politica finalizacion
     public static double dilucionCriticaPetroleo = 0.35; //Valor tipico: 0.35
+    public static int numeroTotalDiasSimulacion = 100;
     //Por politica venta gas
     public static double porcentajeVentaDiarioGas = 0.3;
 

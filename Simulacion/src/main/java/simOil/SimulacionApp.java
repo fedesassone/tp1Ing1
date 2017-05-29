@@ -11,7 +11,6 @@ import simOil.reguladores.ReguladorTanque;
 import java.util.Scanner;
 
 class SimulacionApp {
-    //FIXME: Completar
     public static void main(String[] args) {
         ParametrosSimulacion params = new ParametrosSimulacion();
 
@@ -68,8 +67,15 @@ class SimulacionApp {
         System.out.println("Seleccione una politica de extraccion (Unica opcion)");
         politicaExtraccion = new PoliticaExtraerPozosAleatorios(params.numeroMaximaPozosAAbrirPorDia);
 
-        System.out.println("Seleccione una politica de finalizacion (Unica opcion)");
-        politicaFinalizacion = new PoliticaFinalizarPorDilucionCritica(params.dilucionCriticaPetroleo);
+        System.out.println("Seleccione una politica de finalizacion\n" +
+                "\t[1] PoliticaFinalizarPorDilucionCritica\n" +
+                "\t[2] PoliticaFinalizarPorNumeroDias");
+        int politicaFinalizacionSeleccionada = s.nextInt();
+        if(politicaFinalizacionSeleccionada == 1){
+            politicaFinalizacion = new PoliticaFinalizarPorDilucionCritica(params.dilucionCriticaPetroleo);
+        }else{
+            politicaFinalizacion = new PoliticaFinalizarPorNumeroDias(params.numeroTotalDiasSimulacion);
+        }
 
         Logger logger = new LoggerAConsola();
         Reservorio reservorio = new Reservorio(
@@ -102,8 +108,8 @@ class SimulacionApp {
             simulador.simularUnNuevoDia();
         }
         logger.loguear("Se finalizo la simulacion con los resultados:\n" +
-                "\tGasto total: " + simulador.costoTotal + "\n" +
-                "\tGanancia total: " + simulador.gananciaTotal + "\n" +
+                "\tGasto total: $" + simulador.costoTotal + "\n" +
+                "\tGanancia total: $" + simulador.gananciaTotal + "\n" +
                 "\tReinyeccion de agua: " + simulador.totalAguaReinyectada + "\n" +
                 "\tReinyeccion de gas: " + simulador.totalGasReinyectada + "\n" +
                 "\tVolumen de petroleo total vendido: " + simulador.totalPetroleoVendido + "\n" +

@@ -45,7 +45,6 @@ public class Fixtures {
         return reguladorPlanta;
     }
 
-    //FIXME: Renombrar?
     public Simulador simuladorParaTesting(){
         int numeroPlantas = 2;
         int numeroTanquesGas = 1;

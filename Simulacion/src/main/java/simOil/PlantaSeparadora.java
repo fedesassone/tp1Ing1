@@ -14,8 +14,6 @@ public class PlantaSeparadora {
         this.logger = logger;
     }
 
-    //FIXME: Se deberia loguear en cuanto de agua y de gas se separo el producto
-    //       Le pasamos la proporcion de gas y agua como parametro?
     public void separar(double unVolumen) {
         logger.loguear("Se separo " + unVolumen + "cm3 en la planta " + numeroPlanta);
     }

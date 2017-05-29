@@ -15,7 +15,6 @@ public class Pozo {
     private CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion;
     private Logger logger;
 
-    //FIXME: Acordarse de borrar la parcela al crear el pozo
     public Pozo(int id, double presionActualBocaDePozo, CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion, Logger logger) {
         this.id = id;
         this.presionInicial = presionActualBocaDePozo;

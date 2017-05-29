@@ -8,8 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.lang.Math;
-//FIXME: El manejo de las compras es siempre igual y nunca va a cambiar para este y ReguladorPlantas
-//       Abstraer esto de alguna forma?
+
 public class ReguladorTanque implements Regulador {
 
     //Obtenemos los valores de las constantes para la construccion de plantas separadoras
@@ -63,8 +62,6 @@ public class ReguladorTanque implements Regulador {
     }
 
     public TanqueEnConstruccion comprarTanque(){
-        //FIXME: De donde se obtiene el precio del tanque comprado?
-        //FIXME: Se tiene que loguear la compra del tanque?
         TanqueEnConstruccion nuevoTanque = new TanqueEnConstruccion(diasConstruccionTanques, capacidadNuevosTanques);
         tanquesEnConstruccion.add(nuevoTanque);
         return nuevoTanque;

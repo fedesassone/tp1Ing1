@@ -11,13 +11,12 @@ import java.util.List;
 public class PoliticaSiempreTenerUnRIG implements PoliticaAlquilerDeRIGs {
 
     public void aplicarPolitica(Simulador unSimulador){
-        //TODO: Completar
         Logger log = unSimulador.logger;
         List<PozoEnExcavacion> pozosEnExcavacion = unSimulador.reguladorPozo.damePozosEnExcavacion();
         if(unSimulador.rigsAlquilados.isEmpty()){
             if(!pozosEnExcavacion.isEmpty()){
                 log.loguear("Se alquilo un RIG BASICO por " + ParametrosSimulacion.numeroDiasAlquilerDeRigs +
-                        " con un costo de " + (ParametrosSimulacion.rigBasicoCostoPorDia * ParametrosSimulacion.rigBasicoCostoPorDia));
+                        " con un costo de $" + (ParametrosSimulacion.rigBasicoCostoPorDia * ParametrosSimulacion.rigBasicoCostoPorDia));
                 unSimulador.costoTotal=+ ParametrosSimulacion.rigBasicoCostoPorDia;
                 RIG unNuevoRig = new RIG(1,
                         ParametrosSimulacion.rigBasicoPoderExcavacion,

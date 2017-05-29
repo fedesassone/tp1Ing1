@@ -34,7 +34,7 @@ public class Simulador {
     public Logger logger;
 
     //Llevador de Costos y Beneficios
-    public int costoTotal; //FIXME: Se toma en cuenta costo de RIGS (combustible)?
+    public int costoTotal;
     public int gananciaTotal;
 
     public double totalAguaReinyectada;
@@ -154,14 +154,14 @@ public class Simulador {
         double gananciaVenta = unVolumenAVender * new ParametrosSimulacion().gananciaPorCm3VendidoGas;
         gananciaTotal += gananciaVenta;
         totalGasVendido += unVolumenAVender;
-        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de gas por " + gananciaVenta);
+        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de gas por $" + gananciaVenta);
     }
 
     public void venderPetroleo(double unVolumenAVender) {
         double gananciaVenta = unVolumenAVender * new ParametrosSimulacion().gananciaPorCm3VendidoPetroleo;
         gananciaTotal += gananciaVenta;
         totalPetroleoVendido += unVolumenAVender;
-        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de petroleo por " + gananciaVenta);
+        logger.loguear("Se vendio " + unVolumenAVender + "cm3 de petroleo por $" + gananciaVenta);
     }
 
     CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion = new CalculadorPresionPorReinyeccionImpl();

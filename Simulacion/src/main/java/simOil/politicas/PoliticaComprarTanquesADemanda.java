@@ -19,7 +19,7 @@ public class PoliticaComprarTanquesADemanda implements PoliticaCompraDeTanques {
         double capacidadAlmacenamientoDeGas = unSimulador.reguladorTanqueGas.futuraCapacidadAlmacenamientoTotal();
 
         while (proporcionDeAguaMaximo>capacidadAlmacenamientoDeAgua){
-            log.loguear("Se compró un Tanque de Agua por un costo de " + ParametrosSimulacion.TANQUE_AGUA_COSTO);
+            log.loguear("Se compró un Tanque de Agua por un costo de $" + ParametrosSimulacion.TANQUE_AGUA_COSTO);
             unSimulador.costoTotal=+ ParametrosSimulacion.TANQUE_AGUA_COSTO;
 
             TanqueEnConstruccion tanqueAguaConstruido = unSimulador.reguladorTanqueAgua.comprarTanque();
@@ -28,7 +28,7 @@ public class PoliticaComprarTanquesADemanda implements PoliticaCompraDeTanques {
         }
 
         while(proporcionDeGasMaximo>capacidadAlmacenamientoDeGas){
-            log.loguear("Se compró un Tanque de Gas por un costo de " + ParametrosSimulacion.TANQUE_GAS_COSTO);
+            log.loguear("Se compró un Tanque de Gas por un costo de $" + ParametrosSimulacion.TANQUE_GAS_COSTO);
             unSimulador.costoTotal=+ ParametrosSimulacion.TANQUE_GAS_COSTO;
 
             TanqueEnConstruccion tanqueGasConstruido = unSimulador.reguladorTanqueGas.comprarTanque();

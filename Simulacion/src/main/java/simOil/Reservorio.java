@@ -40,7 +40,6 @@ public class Reservorio {
         return volumenR;
     }
 
-    //FIXME: Se puede actualizarPresionPorReinyeccion de a mas de a un producto? Segun como estan escritas las formulas parece que no
     public void reinyectar(double unVolumenAReinyectarAgua, double unVolumenAReinyectarGas){
         logger.loguear("Se reinyecto " + unVolumenAReinyectarAgua + "cm3 de agua y "
                 + unVolumenAReinyectarGas + "cm3 de gas");
@@ -57,10 +56,6 @@ public class Reservorio {
         volumenGlobalExtraido += unVolumen;
     }
 
-    //FIXME: En el enunciado dice que se podria cambiar esta formula, deberíamos abstraerla?
-    //FIXME: Estas formulas no son exactamente las del enunciado (no se entienden las del enunciado,
-    //       las escritas aca son las que tiene sentido que sean)
-    //Formula 4 del enunciado
     private double proporcionElementoAlReinyectar(double proporcionViejaProducto,
                                                   double volumenReinyectadoEsteProducto,
                                                   double volumenReinyectadoTotal){

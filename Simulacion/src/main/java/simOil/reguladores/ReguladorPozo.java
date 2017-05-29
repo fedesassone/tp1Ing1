@@ -14,7 +14,6 @@ public class ReguladorPozo implements Regulador {
     private List<PozoEnExcavacion> pozosEnExcavacion;
     Logger logger;
 
-    //FIXME: Se pueden pasarle pozos ya completados al regulador?
     public ReguladorPozo(List<Pozo> pozosCompletados, List<PozoEnExcavacion> pozosEnExcavacion, Logger logger) {
         this.pozosCompletados = pozosCompletados;
         this.pozosEnExcavacion = pozosEnExcavacion;
