@@ -148,7 +148,7 @@ public class Simulador {
         logger.loguear("Se vendio " + unVolumenAVender + "cm3 de petroleo");
     }
 
-    CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion;
+    CalculadorPresionPorReinyeccion calculadorPresionPorReinyeccion = new CalculadorPresionPorReinyeccionImpl();
 
     public void generarParcelasIniciales(){
         int cantidadParcelas = this.reservorio.area / 10000;
