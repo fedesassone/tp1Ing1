@@ -35,7 +35,7 @@ public class PoliticaDecompraDePlantasADemandaTest {
         LoggerAConsola logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
-        PoliticaComprarPlantasADemanda politicaCompra = new PoliticaComprarPlantasADemanda(logger);
+        PoliticaComprarPlantasADemanda politicaCompra = new PoliticaComprarPlantasADemanda();
         politicaCompra.aplicarPolitica(simulador);
         int cantidadFinal = reguladorPlantaSeparadora.numeroDePlantasEnConstruccion();
         assert(cantidadFinal>cantidadInicial);
@@ -70,7 +70,7 @@ public class PoliticaDecompraDePlantasADemandaTest {
         LoggerAConsola logger = new LoggerAConsola();
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
-        PoliticaComprarPlantasADemanda politicaCompra = new PoliticaComprarPlantasADemanda(logger);
+        PoliticaComprarPlantasADemanda politicaCompra = new PoliticaComprarPlantasADemanda();
         politicaCompra.aplicarPolitica(simulador);
         int cantidadFinal = reguladorPlantaSeparadora.numeroDePlantasEnConstruccion();
         double c = reguladorPlantaSeparadora.futuraCapacidadDeSeparacionTotal();

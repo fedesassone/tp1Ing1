@@ -34,7 +34,7 @@ public class PoliticaDeCompraDeTanquesADemandaTest {
 
         int cantInicialTanquesDeAgua = reguladorTanqueAgua.cantidadTanquesEnConstruccion();
 
-        PoliticaComprarTanquesADemanda politicaCompra = new PoliticaComprarTanquesADemanda(logger);
+        PoliticaComprarTanquesADemanda politicaCompra = new PoliticaComprarTanquesADemanda();
         politicaCompra.aplicarPolitica(simulador);
         double capacidadExtraccionAguaMaximo = simulador.reservorio.proporcionDeAgua*simulador.reguladorPozo.capacidadDeExtraccionTotal(3);
 
@@ -70,7 +70,7 @@ public class PoliticaDeCompraDeTanquesADemandaTest {
 
         int cantInicialTanquesDeGas = reguladorTanqueGas.cantidadTanquesEnConstruccion();
 
-        PoliticaComprarTanquesADemanda politicaCompra = new PoliticaComprarTanquesADemanda(logger);
+        PoliticaComprarTanquesADemanda politicaCompra = new PoliticaComprarTanquesADemanda();
         politicaCompra.aplicarPolitica(simulador);
         double capacidadExtraccionGasMaximo = simulador.reservorio.proporcionDeGas*simulador.reguladorPozo.capacidadDeExtraccionTotal(1);
 
