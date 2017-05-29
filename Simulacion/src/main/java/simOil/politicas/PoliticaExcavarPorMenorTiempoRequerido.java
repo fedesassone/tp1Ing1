@@ -1,6 +1,7 @@
 package simOil.politicas;
 
 import simOil.*;
+import simOil.logger.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,6 +9,9 @@ import java.util.List;
 public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacion {
     //esto excava los pozos que usen menos tiempo de excavacion
     public void aplicarPolitica(Simulador unSimulador){
+        Logger log = unSimulador.logger;
+
+
         List<PozoEnExcavacion> pozosEnExcav= unSimulador.reguladorPozo.damePozosEnExcavacion();
         List<PozoEnExcavacion> pozosLuegoDeExcavar = new LinkedList<PozoEnExcavacion>();
 
@@ -16,6 +20,8 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
 
         int n = Math.min(pozosEnExcav.size(), rigsDisponibles.size());
         int i = 0;
+
+        parcelaAConstruccion(unSimulador);
         //unSimulador.parcelasNoExcavadas
         while (i<n){
             int indicePozoAExcavar = proximoPozo(pozosEnExcav);
@@ -29,6 +35,9 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
             rigsDisponibles.remove(0);
 
             rigAUsar.excavarPozo(pozoAExcavar);
+
+            log.loguear("Se excavó un pozo y ahora le restan " + pozoAExcavar.profundidadRestante() + " metros.");
+
             if(pozoAExcavar.profundidadRestante()==0){//llego a cero, entonces es un pozo en uso
                 unSimulador.reguladorPozo.nuevoPozoCompletado(pozoAExcavar);
 

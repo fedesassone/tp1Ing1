@@ -37,6 +37,9 @@ public abstract class PoliticaExtraccion implements Politica {
             pozoSiguiente.extraer(volumenAExtraer, unSimulador.reservorio.volumenInicial(),
                     unSimulador.reservorio.volumenActual(), numeroPozosAHabilitar);
             unSimulador.reservorio.extraer(volumenAExtraer);
+
+
+
         }
 
         //Se separa lo extraido

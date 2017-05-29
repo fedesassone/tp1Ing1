@@ -30,7 +30,18 @@ public class Simulador {
     private PoliticaFinalizacion politicaFinalizacion;
 
     //Logger
-    private Logger logger;
+    public Logger logger;
+
+    //Llevador de Costos y Beneficios
+    public int costoTotal;
+    public int gananciaTotal;
+
+    public double totalAguaReinyectada;
+    public double totalGasReinyectada;
+
+    public double totalPetroleoVendido;
+    public double totalGasVendido;
+
 
     //Objetos del yacimiento
     public int numeroDeDia;
@@ -57,8 +68,8 @@ public class Simulador {
                 reguladorPlantaSeparadora,
                 new PoliticaSiempreTenerUnRIG(),
                 new PoliticaExcavarPorMenorTiempoRequerido(),
-                new PoliticaComprarTanquesADemanda(logger),
-                new PoliticaComprarPlantasADemanda(logger),
+                new PoliticaComprarTanquesADemanda(),
+                new PoliticaComprarPlantasADemanda(),
                 new PoliticaVenderPorcentajeGas(new ParametrosSimulacion().porcentajeVentaDiarioGas),
                 new PoliticaReinyectarPorPresionCritica(new ParametrosSimulacion().presionCriticaPozos, new CalculadorPresionPorReinyeccionImpl()),
                 new PoliticaExtraerPozosAleatorios(new ParametrosSimulacion().numeroMaximaPozosAAbrirPorDia),
