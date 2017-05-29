@@ -50,7 +50,7 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
             pozosLuegoDeExcavar.add(aux);
         }
 
-        unSimulador.reguladorPozo.actualizarPozosEnExacavacion(pozosLuegoDeExcavar );
+        unSimulador.reguladorPozo.actualizarPozosEnExcavacion(pozosLuegoDeExcavar );
         unSimulador.rigsAlquilados = rigsDisponiblesCopia; //restauro los RIGS para usarlo el proximo dia
 
     }

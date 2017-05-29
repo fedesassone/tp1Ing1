@@ -68,13 +68,9 @@ public class ReguladorPozo implements Regulador {
         return capacidadTotal;
     }
 
-    public void actualizarPozosEnExacavacion(List<PozoEnExcavacion> listaDePozos){
+    public void actualizarPozosEnExcavacion(List<PozoEnExcavacion> listaDePozos){
 
         this.pozosEnExcavacion = listaDePozos;
     }
 
-    //FIXME: Es necesaria? La excavacion no es por dia, depende de los RIGs que se tiene
-    public void avanzarDiaExcavacion() {
-        //TODO: Completar
-    }
 }
