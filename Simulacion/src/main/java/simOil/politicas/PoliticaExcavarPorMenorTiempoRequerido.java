@@ -31,6 +31,8 @@ public class PoliticaExcavarPorMenorTiempoRequerido implements PoliticaExcavacio
             rigsDisponibles.remove(0);
 
             rigAUsar.excavarPozo(pozoAExcavar);
+            unSimulador.costoTotal += ParametrosSimulacion.costoCombustiblePorLitro *
+                    ParametrosSimulacion.cantidadCombustiblePorDia;
 
             log.loguear("Se excavó un pozo y ahora le restan " + pozoAExcavar.profundidadRestante() + " metros.");
 

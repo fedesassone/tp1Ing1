@@ -43,6 +43,8 @@ public final class ParametrosSimulacion {
     //Parametros Rigs
     public static int minimoDiaAlquilerDeRigs = 5;
     public static int numeroDiasAlquilerDeRigs = 10;
+    public static double cantidadCombustiblePorDia = 100;
+    public static double costoCombustiblePorLitro = 1.0;
 
     //Parametros modelos de rigs
     public static int rigBasicoPoderExcavacion = 100;
