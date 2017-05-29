@@ -2,7 +2,6 @@ package simOil;
 
 import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
 import simOil.logger.Logger;
-import simOil.logger.LoggerAArchivo;
 import simOil.logger.LoggerAConsola;
 import simOil.politicas.*;
 import simOil.reguladores.ReguladorPlantaSeparadora;
@@ -18,7 +17,7 @@ class SimulacionApp {
 
         //Politicas
         PoliticaSeleccionDeParcelas politicaSeleccionDeParcelas;
-        PoliticaCompraDeRIGs politicaCompraDeRIGs;
+        PoliticaAlquilerDeRIGs politicaAlquilerDeRIGs;
         PoliticaExcavacion politicaExcavacion;
         PoliticaCompraDeTanques politicaCompraDeTanques;
         PoliticaCompraDePlantas politicaCompraDePlantas;
@@ -38,9 +37,9 @@ class SimulacionApp {
                 "\t[2] PoliticaTenerUnRigParaCadaPozo");
         int politicaCompraDeRIGsSeleccionada = s.nextInt();
         if(politicaCompraDeRIGsSeleccionada == 1){
-            politicaCompraDeRIGs = new PoliticaSiempreTenerUnRIG();
+            politicaAlquilerDeRIGs = new PoliticaSiempreTenerUnRIG();
         } else {
-            politicaCompraDeRIGs = new PoliticaTenerUnRigParaCadaPozo();
+            politicaAlquilerDeRIGs = new PoliticaTenerUnRigParaCadaPozo();
         }
 
         System.out.println("Seleccione una politica de excavacion (Unica opcion)");
@@ -85,7 +84,7 @@ class SimulacionApp {
                 new ReguladorTanque(TipoDeProducto.GAS, logger),
                 new ReguladorPozo(logger),
                 new ReguladorPlantaSeparadora(logger),
-                politicaCompraDeRIGs,
+                politicaAlquilerDeRIGs,
                 politicaExcavacion,
                 politicaCompraDeTanques,
                 politicaCompraDePlantas,

@@ -20,7 +20,7 @@ public class Simulador {
     public ReguladorPlantaSeparadora reguladorPlantaSeparadora;
 
     //Politicas
-    private PoliticaCompraDeRIGs politicaCompraDeRIGs;
+    private PoliticaAlquilerDeRIGs politicaAlquilerDeRIGs;
     private PoliticaExcavacion politicaExcavacion;
     private PoliticaCompraDeTanques politicaCompraDeTanques;
     private PoliticaCompraDePlantas politicaCompraDePlantas;
@@ -77,7 +77,7 @@ public class Simulador {
     }
 
     public Simulador(ReguladorTanque reguladorTanqueAgua, ReguladorTanque reguladorTanqueGas, ReguladorPozo reguladorPozo, ReguladorPlantaSeparadora reguladorPlantaSeparadora,
-                     PoliticaCompraDeRIGs politicaCompraDeRIGs, PoliticaExcavacion politicaExcavacion, PoliticaCompraDeTanques politicaCompraDeTanques,
+                     PoliticaAlquilerDeRIGs politicaAlquilerDeRIGs, PoliticaExcavacion politicaExcavacion, PoliticaCompraDeTanques politicaCompraDeTanques,
                      PoliticaCompraDePlantas politicaCompraDePlantas, PoliticaVentaDeGas politicaVentaDeGas, PoliticaReinyeccion politicaReinyeccion,
                      PoliticaExtraccion politicaExtraccion, PoliticaFinalizacion politicaFinalizacion,
                      Reservorio reservorio, Logger logger) {
@@ -88,7 +88,7 @@ public class Simulador {
         this.reguladorPlantaSeparadora = reguladorPlantaSeparadora;
 
         //Politicas
-        this.politicaCompraDeRIGs = politicaCompraDeRIGs;
+        this.politicaAlquilerDeRIGs = politicaAlquilerDeRIGs;
         this.politicaExcavacion = politicaExcavacion;
         this.politicaCompraDeTanques = politicaCompraDeTanques;
         this.politicaCompraDePlantas = politicaCompraDePlantas;
@@ -111,7 +111,7 @@ public class Simulador {
         logger.loguear("Comenzo simulacion del dia numero " + numeroDeDia);
         numeroDeDia ++;
         avanzarDiaDeConstrucciones();
-        politicaCompraDeRIGs.aplicarPolitica(this);
+        politicaAlquilerDeRIGs.aplicarPolitica(this);
         politicaExcavacion.aplicarPolitica(this);
         politicaCompraDePlantas.aplicarPolitica(this);
         politicaCompraDeTanques.aplicarPolitica(this);

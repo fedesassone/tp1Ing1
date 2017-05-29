@@ -5,11 +5,10 @@ import simOil.PozoEnExcavacion;
 import simOil.RIG;
 import simOil.Simulador;
 import simOil.logger.Logger;
-import simOil.logger.LoggerAConsola;
 
 import java.util.List;
 
-public class PoliticaTenerUnRigParaCadaPozo implements PoliticaCompraDeRIGs {
+public class PoliticaTenerUnRigParaCadaPozo implements PoliticaAlquilerDeRIGs {
     public void aplicarPolitica(Simulador simulador) {
         Logger log = simulador.logger;
         List<PozoEnExcavacion> listaPozosEnExcavacion = simulador.reguladorPozo.damePozosEnExcavacion();

@@ -2,6 +2,6 @@ package simOil.politicas;
 
 import simOil.Simulador;
 
-public interface PoliticaVentaDeGas extends Politica {
+public interface PoliticaVentaDeGas {
     void realizarVentaDeGas(Simulador simulador);
 }

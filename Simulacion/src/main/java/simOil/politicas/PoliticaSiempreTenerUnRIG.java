@@ -5,11 +5,10 @@ import simOil.PozoEnExcavacion;
 import simOil.RIG;
 import simOil.Simulador;
 import simOil.logger.Logger;
-import simOil.logger.LoggerAConsola;
 
 import java.util.List;
 
-public class PoliticaSiempreTenerUnRIG implements PoliticaCompraDeRIGs {
+public class PoliticaSiempreTenerUnRIG implements PoliticaAlquilerDeRIGs {
 
     public void aplicarPolitica(Simulador unSimulador){
         //TODO: Completar

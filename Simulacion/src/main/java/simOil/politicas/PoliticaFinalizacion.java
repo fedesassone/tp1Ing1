@@ -2,7 +2,7 @@ package simOil.politicas;
 
 import simOil.Simulador;
 
-public interface PoliticaFinalizacion extends Politica {
+public interface PoliticaFinalizacion {
 
     boolean hayQueFinalizarSimulacion(Simulador simulador);
 }

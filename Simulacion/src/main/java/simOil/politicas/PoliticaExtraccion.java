@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class PoliticaExtraccion implements Politica {
+public abstract class PoliticaExtraccion {
 
     public void realizarExtracciones(Simulador unSimulador){
         //Obtenemos los parametros necesarios para la aplicacion

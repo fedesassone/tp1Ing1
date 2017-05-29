@@ -2,7 +2,7 @@ package simOil.politicas;
 
 import simOil.Simulador;
 
-public interface PoliticaReinyeccion extends Politica {
+public interface PoliticaReinyeccion {
 
     boolean hayQueReinyectar(Simulador simulador);
 

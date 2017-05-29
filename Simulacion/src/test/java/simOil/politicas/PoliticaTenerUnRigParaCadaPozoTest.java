@@ -3,7 +3,6 @@ package simOil.politicas;
 
 import org.junit.jupiter.api.Test;
 import simOil.*;
-import simOil.calculadores.CalculadorPresionPorReinyeccionImpl;
 import simOil.logger.LoggerAConsola;
 import simOil.reguladores.ReguladorPlantaSeparadora;
 import simOil.reguladores.ReguladorPozo;
@@ -38,9 +37,9 @@ class PoliticaTenerUnRigParaCadaPozoTest {
         Simulador simulador = new Simulador(reguladorTanqueAgua, reguladorTanqueGas, reguladorPozo,
                 reguladorPlantaSeparadora, reservorio, logger);
 
-        PoliticaCompraDeRIGs politicaCompraDeRIGs = new PoliticaTenerUnRigParaCadaPozo();
+        PoliticaAlquilerDeRIGs politicaAlquilerDeRIGs = new PoliticaTenerUnRigParaCadaPozo();
 
-        politicaCompraDeRIGs.aplicarPolitica(simulador);
+        politicaAlquilerDeRIGs.aplicarPolitica(simulador);
 
         assert (simulador.rigsAlquilados.size() == 2 );
 

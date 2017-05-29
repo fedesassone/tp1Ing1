@@ -2,6 +2,6 @@ package simOil.politicas;
 
 import simOil.Simulador;
 
-public interface PoliticaExcavacion extends Politica {
+public interface PoliticaExcavacion {
     void aplicarPolitica(Simulador simulador);
 }
